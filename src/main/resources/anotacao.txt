@@ -1,0 +1,39 @@
+domain
+domain dto
+repository
+service
+resources/controller
+exception
+test unitario/
+test de classes
+http://localhost:8080/swagger-ui/index.html
+
+
+# database configs 
+spring.datasource.url=jdbc:mysql://localhost:3306/api?useTimezone=true&serverTimezone=America/Sao_Paulo 
+spring.datasource.username=root 
+spring.datasource.password=scope227 
+spring.datasource.driverClassName=com. mysql.jdbc.Driver 
+spring.datasource.testWhileIdle=true 
+spring.datasource.validationQuery=SELECT 1 
+spring.jpa.show-sql=true 
+spring.jpa.hibernate.ddl-auto=atualizar 
+spring.jpa.hibernate.naming-strategy= org.hibernate.cfg.ImprovedNamingStrategy 
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+
+
+
+spring.datasource.url=jdbc:mysql://localhost:3306/testbdv2?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=123456
+
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+
+spring.jpa.properties.hibernate.format_sql=true
+#spring.jpa.defer-datasource-initialization=true
+
+spring.jpa.properties.hibernate.show_sql=true
+spring.jpa.properties.hibernate.use_sql_comments=true
+#spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
