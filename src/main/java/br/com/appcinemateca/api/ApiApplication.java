@@ -23,11 +23,11 @@ public class ApiApplication implements CommandLineRunner{
         SpringApplication.run(ApiApplication.class, args);
     }
 
-    public void run(String... args) throws Exception {
-    	Person u1 = new Person(null, "Valdir", "valdir@mail.com", "123");
+   public void run(String... args) throws Exception {
+    	/**Person u1 = new Person(null, "Valdir", "valdir@mail.com", "123");
         Person u2 = new Person(null, "Luiz", "luiz@mail.com", "123");
         Person u3 = new Person(null, "Luiza", "luiza@mail.com", "123");
 
-        repository.saveAll(List.of(u1,u2,u3));
+        repository.saveAll(List.of(u1,u2,u3));**/
     }
 }
