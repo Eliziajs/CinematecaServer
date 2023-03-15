@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 
 //@CrossOrigin
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/person")
 @Tag(name = "usuarios", description= "Endpoints for Managing Usuarios")
 public class PersonResource {
 
