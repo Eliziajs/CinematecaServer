@@ -2,23 +2,21 @@ package br.com.appcinemateca.api.services.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.stereotype.Service;
 
 import br.com.appcinemateca.api.domain.Person;
 import br.com.appcinemateca.api.domain.dto.PersonDTO;
 import br.com.appcinemateca.api.repositories.PersonRepository;
-import br.com.appcinemateca.api.services.PersonService;
+import br.com.appcinemateca.api.services.PersonServices;
 import br.com.appcinemateca.api.services.exceptions.DataIntegratyViolationException;
 import br.com.appcinemateca.api.services.exceptions.ObjectNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Service
-public class PersonServiceImpl implements PersonService {
+public class PersonServiceImpl implements PersonServices {
 
     @Autowired
     private PersonRepository repository;

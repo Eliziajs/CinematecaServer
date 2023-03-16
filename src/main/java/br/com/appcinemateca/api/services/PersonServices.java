@@ -5,7 +5,7 @@ import java.util.List;
 import br.com.appcinemateca.api.domain.Person;
 import br.com.appcinemateca.api.domain.dto.PersonDTO;
 
-public interface PersonService {
+public interface PersonServices {
 
     Person findById(Long id);
     List<Person> findAll();
