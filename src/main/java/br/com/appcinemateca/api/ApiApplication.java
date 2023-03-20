@@ -1,16 +1,10 @@
 package br.com.appcinemateca.api;
 
-import java.util.List;
-
-
+import br.com.appcinemateca.api.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-
-import br.com.appcinemateca.api.domain.Person;
-import br.com.appcinemateca.api.repositories.PersonRepository;
 
 
 @SpringBootApplication
