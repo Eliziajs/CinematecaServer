@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +23,13 @@ public class AuthServices {
 	@Autowired
 	private UserRepository repository;
 	
-	@SuppressWarnings("rawtypes")
+	//@SuppressWarnings("rawtypes")
 	public ResponseEntity signin(AccountCredentialsDTO data) {
 		try {
 			var username = data.getUsername();
 			var password = data.getPassword();
-			authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(username, password));
+			//authenticationManager.authenticate(
+				//new UsernamePasswordAuthenticationToken(username, password));
 			
 			var user = repository.findByUserName(username);
 			
