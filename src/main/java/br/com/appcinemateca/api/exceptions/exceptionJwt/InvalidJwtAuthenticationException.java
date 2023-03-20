@@ -1,4 +1,4 @@
-package br.com.appcinemateca.api.exceptions.security;
+package br.com.appcinemateca.api.exceptions.exceptionJwt;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
