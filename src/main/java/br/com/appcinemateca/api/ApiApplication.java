@@ -4,10 +4,9 @@ import br.com.appcinemateca.api.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@SpringBootApplication
+//@SpringBootApplication
 public class ApiApplication implements CommandLineRunner{
 
     @Autowired
