@@ -1,23 +1,13 @@
 package br.com.appcinemateca.api.domain;
 
+import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -31,9 +21,6 @@ public class User implements UserDetails, Serializable {
 	
 	@Column(name = "user_name", unique = true)
 	private String userName;
-	
-	@Column(name = "full_name")
-	private String fullName;
 	
 	@Column(name = "password")
 	private String password;
@@ -57,6 +44,7 @@ public class User implements UserDetails, Serializable {
 	private List<Permission> permissions;
 	
 	public User() {}
+
 
 	public List<String> getRoles() {
 		List<String> roles = new ArrayList<>();
@@ -117,14 +105,6 @@ public class User implements UserDetails, Serializable {
 		this.userName = userName;
 	}
 
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
 	public Boolean getAccountNonExpired() {
 		return accountNonExpired;
 	}
@@ -177,7 +157,6 @@ public class User implements UserDetails, Serializable {
 		result = prime * result + ((accountNonLocked == null) ? 0 : accountNonLocked.hashCode());
 		result = prime * result + ((credentialsNonExpired == null) ? 0 : credentialsNonExpired.hashCode());
 		result = prime * result + ((enabled == null) ? 0 : enabled.hashCode());
-		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((permissions == null) ? 0 : permissions.hashCode());
@@ -214,12 +193,7 @@ public class User implements UserDetails, Serializable {
 				return false;
 		} else if (!enabled.equals(other.enabled))
 			return false;
-		if (fullName == null) {
-			if (other.fullName != null)
-				return false;
-		} else if (!fullName.equals(other.fullName))
-			return false;
-		if (id == null) {
+				if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
