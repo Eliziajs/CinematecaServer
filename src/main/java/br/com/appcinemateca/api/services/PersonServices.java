@@ -3,7 +3,7 @@ package br.com.appcinemateca.api.services;
 import java.util.List;
 
 import br.com.appcinemateca.api.domain.Person;
-import br.com.appcinemateca.api.domain.dto.PersonDTO;
+import br.com.appcinemateca.api.dto.PersonDTO;
 
 public interface PersonServices {
 

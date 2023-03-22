@@ -10,11 +10,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.appcinemateca.api.domain.Person;
-import br.com.appcinemateca.api.domain.dto.PersonDTO;
+import br.com.appcinemateca.api.dto.PersonDTO;
 import br.com.appcinemateca.api.repositories.PersonRepository;
 import br.com.appcinemateca.api.services.exceptions.DataIntegratyViolationException;
 import br.com.appcinemateca.api.services.exceptions.ObjectNotFoundException;
-import br.com.appcinemateca.api.services.impl.PersonServiceImpl;
+import br.com.appcinemateca.api.services.implementation.PersonServiceImpl;
 
 import java.util.List;
 import java.util.Optional;

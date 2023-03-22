@@ -4,7 +4,7 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
-import br.com.appcinemateca.api.domain.dto.security.TokenDTO;
+import br.com.appcinemateca.api.security.TokenDTO;
 import br.com.appcinemateca.api.exceptions.exceptionJwt.InvalidJwtAuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

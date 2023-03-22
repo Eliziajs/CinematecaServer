@@ -1,4 +1,4 @@
-package br.com.appcinemateca.api.domain.dto;
+package br.com.appcinemateca.api.dto;
 
 import java.io.Serializable;
 

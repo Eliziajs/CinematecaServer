@@ -1,4 +1,4 @@
-package br.com.appcinemateca.api.domain.dto.security;
+package br.com.appcinemateca.api.security;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,7 +1,7 @@
-package br.com.appcinemateca.api.services;
+package br.com.appcinemateca.api.services.implementation;
 
-import br.com.appcinemateca.api.domain.dto.security.AccountCredentialsDTO;
-import br.com.appcinemateca.api.domain.dto.security.TokenDTO;
+import br.com.appcinemateca.api.security.AccountCredentialsDTO;
+import br.com.appcinemateca.api.security.TokenDTO;
 import br.com.appcinemateca.api.repositories.UserRepository;
 import br.com.appcinemateca.api.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;

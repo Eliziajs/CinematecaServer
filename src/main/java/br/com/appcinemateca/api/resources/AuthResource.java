@@ -1,7 +1,7 @@
 package br.com.appcinemateca.api.resources;
 
-import br.com.appcinemateca.api.domain.dto.security.AccountCredentialsDTO;
-import br.com.appcinemateca.api.services.AuthServices;
+import br.com.appcinemateca.api.security.AccountCredentialsDTO;
+import br.com.appcinemateca.api.services.implementation.AuthServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
