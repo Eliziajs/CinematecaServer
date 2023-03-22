@@ -12,9 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import br.com.appcinemateca.api.domain.Person;
-import br.com.appcinemateca.api.domain.dto.PersonDTO;
+import br.com.appcinemateca.api.dto.PersonDTO;
 import br.com.appcinemateca.api.resources.PersonResource;
-import br.com.appcinemateca.api.services.impl.PersonServiceImpl;
+import br.com.appcinemateca.api.services.implementation.PersonServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
