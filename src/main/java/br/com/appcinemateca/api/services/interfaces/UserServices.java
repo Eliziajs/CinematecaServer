@@ -1,4 +1,4 @@
-package br.com.appcinemateca.api.services.implementation;
+package br.com.appcinemateca.api.services.interfaces;
 
 import br.com.appcinemateca.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

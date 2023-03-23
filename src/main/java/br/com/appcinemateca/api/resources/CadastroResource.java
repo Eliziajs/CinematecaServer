@@ -1,9 +1,10 @@
+
 package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
-import br.com.appcinemateca.api.domain.Person;
-import br.com.appcinemateca.api.dto.PersonDTO;
-import br.com.appcinemateca.api.services.interfaces.PersonServices;
+import br.com.appcinemateca.api.domain.Cadastro;
+import br.com.appcinemateca.api.dto.CadastroDTO;
+import br.com.appcinemateca.api.services.interfaces.CadastroServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -24,9 +25,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 //@CrossOrigin
 @RestController
-@RequestMapping(value = "/person")
-@Tag(name = "usuarios", description= "Endpoints for Managing Usuarios")
-public class PersonResource {
+@RequestMapping(value = "/cadastro")
+@Tag(name = "cadastro", description= "Endpoints for Managing cadastro de usuarios")
+public class CadastroResource {
 
 	private static final String ID = "/{id}";
 
@@ -34,18 +35,18 @@ public class PersonResource {
 	private ModelMapper mapper;
 
 	@Autowired
-	private PersonServices service;
+	private CadastroServices service;
 
-	// como iterar uma coleção para cada objeto?
-	@GetMapping(produces = {MediaType.APPLICATION_JSON, 
+
+	@GetMapping(produces = {MediaType.APPLICATION_JSON,
 			MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
-	@Operation(summary = "Finds all user", description = "Finds all Users",
-		tags = {"Usuarios"},
+	@Operation(summary = "Finds all register", description = "Finds all registers",
+		tags = {"Cadastros"},
 		responses = {@ApiResponse(description = "Success", responseCode = "200", 
 		content = {
 				@Content(
 						mediaType = "application/json",
-						array = @ArraySchema(schema = @Schema(implementation = PersonDTO.class))
+						array = @ArraySchema(schema = @Schema(implementation = CadastroDTO.class))
 						)
 						}),
 			@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -54,12 +55,12 @@ public class PersonResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<PersonDTO>> findAll() {
+	public ResponseEntity<CollectionModel<CadastroDTO>> findAll() {
 
-		List<Person> list = service.findAll();
-		List<PersonDTO> listDTO = list.stream().map(x -> mapper.map(x, PersonDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(PersonResource.class).findAll()).withSelfRel();
-		CollectionModel<PersonDTO> result = CollectionModel.of(listDTO, link);
+		List<Cadastro> list = service.findAll();
+		List<CadastroDTO> listDTO = list.stream().map(x -> mapper.map(x, CadastroDTO.class)).collect(Collectors.toList());
+		var link = linkTo(methodOn(CadastroResource.class).findAll()).withSelfRel();
+		CollectionModel<CadastroDTO> result = CollectionModel.of(listDTO, link);
 		// return result;
 		return ResponseEntity.ok().body(result);
 
@@ -67,11 +68,11 @@ public class PersonResource {
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 
 			MediaType.APPLICATION_XML,MediaType.APPLICATION_YML})
-	@Operation(summary = "Finds a User", description = "Finds a User",
-	tags = {"Usuario"},
+	@Operation(summary = "Finds a register", description = "Finds a Register",
+	tags = {"Cadastro"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = PersonDTO.class))			
+			@Content(schema = @Schema(implementation = CadastroDTO.class))
 		),
 		@ApiResponse(description = "No Content", responseCode = "204", content = @Content),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -80,10 +81,10 @@ public class PersonResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<PersonDTO> findById(@PathVariable Long id) {
-		Person e = service.findById(id);
-		var v = mapper.map(e, PersonDTO.class);
-		v.add(linkTo(methodOn(PersonResource.class).findById(id)).withSelfRel());
+	public ResponseEntity<CadastroDTO> findById(@PathVariable Long id) {
+		Cadastro e = service.findById(id);
+		var v = mapper.map(e, CadastroDTO.class);
+		//v.add(linkTo(methodOn(CadastroResource.class).findById(id)).withSelfRel());
 
 		return ResponseEntity.ok().body(v);
 	}
@@ -99,21 +100,21 @@ public class PersonResource {
 			MediaType.APPLICATION_YML}, 
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 					MediaType.APPLICATION_YML})
-	@Operation(summary = "Add a User", description = "Add a User",
-	tags = {"Usuario"},
+	@Operation(summary = "Add a Register", description = "Add a Register",
+	tags = {"cadastro"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = PersonDTO.class))			
+			@Content(schema = @Schema(implementation = CadastroDTO.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO obj) {
-		var entity = mapper.map(obj, PersonDTO.class);
-		var vo = mapper.map(service.create(entity), PersonDTO.class);
-		vo.add(linkTo(methodOn(PersonResource.class).findById(vo.getId())).withSelfRel());
+	public ResponseEntity<CadastroDTO> create(@RequestBody CadastroDTO obj) {
+		var entity = mapper.map(obj, CadastroDTO.class);
+		var vo = mapper.map(service.create(entity), CadastroDTO.class);
+		//vo.add(linkTo(methodOn(CadastroResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}
@@ -123,11 +124,11 @@ public class PersonResource {
 			MediaType.APPLICATION_YML}, 
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 					MediaType.APPLICATION_YML})
-	@Operation(summary = "Updates a User", description = "Updates a User",
-	tags = {"Usuario"},
+	@Operation(summary = "Updates a Register", description = "Updates a register",
+	tags = {"cadastro"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = PersonDTO.class))			
+			@Content(schema = @Schema(implementation = CadastroDTO.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -135,16 +136,16 @@ public class PersonResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<PersonDTO> update(@PathVariable Long id, @RequestBody PersonDTO obj) {
-		var entity = mapper.map(obj, PersonDTO.class);
-		var vo = mapper.map(service.update(entity), PersonDTO.class);
-		vo.add(linkTo(methodOn(PersonResource.class).findById(vo.getId())).withSelfRel());
+	public ResponseEntity<CadastroDTO> update(@PathVariable Long id, @RequestBody CadastroDTO obj) {
+		var entity = mapper.map(obj, CadastroDTO.class);
+		var vo = mapper.map(service.update(entity), CadastroDTO.class);
+		//vo.add(linkTo(methodOn(CadastroResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}
 	
-	@Operation(summary = "Deletes a User", description = "Deletes a User",
-	tags = {"Usuario"},
+	@Operation(summary = "Deletes a Register", description = "Deletes a Register",
+	tags = {"Cadastro"},
 	responses = {@ApiResponse(description = "No Content", responseCode = "204", 
 	content = @Content		
 		),
@@ -155,7 +156,7 @@ public class PersonResource {
 	}
 )
 	@DeleteMapping(value = ID)
-	public ResponseEntity<PersonDTO> delete(@PathVariable Long id) {
+	public ResponseEntity<CadastroDTO> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}

@@ -1,9 +1,9 @@
-package br.com.appcinemateca.api.services;
-
-import java.util.List;
+package br.com.appcinemateca.api.services.interfaces;
 
 import br.com.appcinemateca.api.domain.Person;
 import br.com.appcinemateca.api.dto.PersonDTO;
+
+import java.util.List;
 
 public interface PersonServices {
 
