@@ -2,26 +2,12 @@
 
 package br.com.appcinemateca.api.domain;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import java.io.Serializable;
+import java.util.*;
 
 @Entity
 @Table(name = "filmes")
@@ -54,7 +40,7 @@ public class Filme implements Serializable {
 	@OneToMany(mappedBy = "id.filme") // id.ator estudar o caso
 	private Set<Personagem> personagem = new HashSet<>();
 
-	List<Pessoa> pessoas = new ArrayList<>();
+	/*List<Pessoa> pessoas = new ArrayList<>();*/
 
 	public Filme() {
 
@@ -80,9 +66,9 @@ public class Filme implements Serializable {
 		return lista;
 	}
 
-	public void setPessoas(List<Pessoa> pessoas) {
+	/*public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
-	}
+	}*/
 
 	public Long getId() {
 		return id;
