@@ -1,20 +1,10 @@
 package br.com.appcinemateca.api.domain;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "mensagens")
@@ -29,34 +19,33 @@ public class Mensagem implements Serializable {
 	private String mensagem;
 	@Column(name = "Data")
 	private Date data;
-	@Column(name = "tipoMsg")
-	private int tipoMsg;
+	//@Column(name = "tipoMsg")
+	//private int tipoMsg;
 	
 
-	@JsonIgnore
+	/*@JsonIgnore
 	@ManyToMany (mappedBy = "mensagens")
-	private List<Pessoa> pessoas = new  ArrayList<>();
+	private List<Pessoa> pessoas = new  ArrayList<>();*/
 
 	public Mensagem() {
 		
 	}
-	public Mensagem(Long id, String mensagem, Date data, TipoMensagem tipoMsg) {
+	public Mensagem(Long id, String mensagem, Date data) {
 		super();
 		this.id = id;
 		this.mensagem = mensagem;
 		this.data = data;
-		this.tipoMsg = tipoMsg.getCod();
 		
 	}
 	
 	
-	public List<Pessoa> getPessoas() {
+	/*public List<Pessoa> getPessoas() {
 		return pessoas;
 	}
 
 	public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
-	}
+	}*/
 
 	public Long getId() {
 		return id;
@@ -82,9 +71,9 @@ public class Mensagem implements Serializable {
 		this.data = data;
 	}
 
-	public TipoMensagem getTipoMsg() {
+	/*public TipoMensagem getTipoMsg() {
 		return TipoMensagem.toEnum(tipoMsg);
-	}
+	}*/
 	
 	@Override
 	public int hashCode() {
