@@ -8,6 +8,7 @@ test unitario/
 test de classes
 http://localhost:8080/swagger-ui/index.html
 mudar para person as configuraões do swagger
+teste
 
 # database configs 
 spring.datasource.url=jdbc:mysql://localhost:3306/api?useTimezone=true&serverTimezone=America/Sao_Paulo 
