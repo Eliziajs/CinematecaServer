@@ -1,15 +1,14 @@
 package br.com.appcinemateca.api.services.implementation;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import br.com.appcinemateca.api.domain.Person;
 import br.com.appcinemateca.api.dto.PersonDTO;
 import br.com.appcinemateca.api.repositories.PersonRepository;
-import br.com.appcinemateca.api.services.interfaces.PersonServices;
 import br.com.appcinemateca.api.services.exceptions.DataIntegratyViolationException;
 import br.com.appcinemateca.api.services.exceptions.ObjectNotFoundException;
+import br.com.appcinemateca.api.services.interfaces.PersonServices;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;

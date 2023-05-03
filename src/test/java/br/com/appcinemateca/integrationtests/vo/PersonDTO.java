@@ -1,10 +1,8 @@
 package br.com.appcinemateca.integrationtests.vo;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
+import java.io.Serializable;
 
 public class PersonDTO  implements Serializable {
 	private static final long serialVersionUID = 1l;

@@ -1,16 +1,15 @@
 package br.com.appcinemateca.integrationtests.swagger;
 
-import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.*;
-
+import br.com.appcinemateca.api.ApiApplication;
+import br.com.appcinemateca.configuration.TestConfigs;
+import br.com.appcinemateca.integrationTest.containers.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.appcinemateca.api.ApiApplication;
-import br.com.appcinemateca.configuration.TestConfigs;
-import br.com.appcinemateca.integrationTest.containers.AbstractIntegrationTest;
+import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @RunWith(SpringRunner.class)
