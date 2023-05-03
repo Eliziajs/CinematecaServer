@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@SpringBootTest(classes= ResourceExeptionHandler.class)
 class ResourceExeptionHandlerTest {
 
     private static final String OBJETO_NAO_ENCONTRADO = "Objeto não encontrado";

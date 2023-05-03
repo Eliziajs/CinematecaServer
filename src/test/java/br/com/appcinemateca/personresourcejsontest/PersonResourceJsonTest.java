@@ -1,9 +1,18 @@
 package br.com.appcinemateca.personresourcejsontest;
 
-import static io.restassured.RestAssured.given;
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
-
+import br.com.appcinemateca.api.ApiApplication;
+import br.com.appcinemateca.configuration.TestConfigs;
+import br.com.appcinemateca.integrationTest.containers.AbstractIntegrationTest;
+import br.com.appcinemateca.integrationtests.vo.PersonDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -13,20 +22,10 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import br.com.appcinemateca.api.ApiApplication;
-import br.com.appcinemateca.configuration.TestConfigs;
-import br.com.appcinemateca.integrationTest.containers.AbstractIntegrationTest;
-import br.com.appcinemateca.integrationtests.vo.PersonDTO;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.filter.log.LogDetail;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
-import io.restassured.specification.RequestSpecification;
+import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 
@@ -39,6 +38,7 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 	private static RequestSpecification specification;
 	private static ObjectMapper objectMapper;
 	private static PersonDTO person;
+
 	
 	@BeforeAll
 	public static void setup() {

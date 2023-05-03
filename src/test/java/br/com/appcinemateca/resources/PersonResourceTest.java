@@ -1,5 +1,10 @@
 package br.com.appcinemateca.resources;
 
+import br.com.appcinemateca.api.domain.Person;
+import br.com.appcinemateca.api.dto.PersonDTO;
+import br.com.appcinemateca.api.repositories.PersonRepository;
+import br.com.appcinemateca.api.resources.PersonResource;
+import br.com.appcinemateca.api.services.implementation.PersonServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,11 +16,6 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import br.com.appcinemateca.api.domain.Person;
-import br.com.appcinemateca.api.dto.PersonDTO;
-import br.com.appcinemateca.api.resources.PersonResource;
-import br.com.appcinemateca.api.services.implementation.PersonServiceImpl;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,10 +23,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+
+@SpringBootTest(classes = PersonRepository.class)
 class PersonResourceTest {
 
     private static final Long ID      = (long) 1;
@@ -37,6 +37,7 @@ class PersonResourceTest {
 
     private Person person = new Person();
     private PersonDTO personDTO = new PersonDTO();
+
 
     @InjectMocks
     private PersonResource resource;
