@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 
-public class MensagemDTO implements Serializable {
+public class PostDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 
@@ -17,10 +17,10 @@ public class MensagemDTO implements Serializable {
 
 	private int tipoMsg;
 
-	public MensagemDTO() {
+	public PostDTO() {
 		
 	}
-	public MensagemDTO(Long id, String mensagem, Date data) {
+	public PostDTO(Long id, String mensagem, Date data) {
 		super();
 		this.id = id;
 		this.mensagem = mensagem;
@@ -68,7 +68,7 @@ public class MensagemDTO implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MensagemDTO other = (MensagemDTO) obj;
+		PostDTO other = (PostDTO) obj;
 		return Objects.equals(id, other.id);
 	}
 

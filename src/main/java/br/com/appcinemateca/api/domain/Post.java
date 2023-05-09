@@ -7,8 +7,8 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "mensagens")
-public class Mensagem implements Serializable {
+@Table(name = "post")
+public class Post implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -27,10 +27,10 @@ public class Mensagem implements Serializable {
 	@ManyToMany (mappedBy = "mensagens")
 	private List<Pessoa> pessoas = new  ArrayList<>();*/
 
-	public Mensagem() {
+	public Post() {
 		
 	}
-	public Mensagem(Long id, String mensagem, Date data) {
+	public Post(Long id, String mensagem, Date data) {
 		super();
 		this.id = id;
 		this.mensagem = mensagem;
@@ -88,7 +88,7 @@ public class Mensagem implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Mensagem other = (Mensagem) obj;
+		Post other = (Post) obj;
 		return Objects.equals(id, other.id);
 	}
 
