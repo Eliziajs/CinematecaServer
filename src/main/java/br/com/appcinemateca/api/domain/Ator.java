@@ -1,13 +1,12 @@
 package br.com.appcinemateca.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Objects;
 
 @Entity
-@Table(name = "atores")
+@Table(name = "ator")
 public class Ator implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -18,11 +17,11 @@ public class Ator implements Serializable {
 	@Column(name = "nome")
 	private String nome;
 
-	List<Filme> filmes = new ArrayList<>();
+	//List<Filme> filmes = new ArrayList<>();
 
-	@JsonBackReference
-	@OneToMany(mappedBy = "id.ator")
-	private Set<Personagem> personagem = new HashSet<>();
+	//@JsonBackReference
+	//@OneToMany(mappedBy = "id.ator")
+	//private Set<Personagem> personagem = new HashSet<>();
 
 	public Ator() {
 
@@ -50,13 +49,13 @@ public class Ator implements Serializable {
 		this.nome = nome;
 	}
 
-	public Set<Personagem> getPersonagem() {
+	/*public Set<Personagem> getPersonagem() {
 		return personagem;
 	}
 
 	public void setPersonagem(Set<Personagem> personagem) {
 		this.personagem = personagem;
-	}
+	}*/
 
 	@Override
 	public int hashCode() {

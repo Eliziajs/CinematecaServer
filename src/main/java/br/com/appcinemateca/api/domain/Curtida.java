@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
+
 @Entity
 @Table(name = "curtida")
 public class Curtida implements Serializable {
@@ -12,9 +13,10 @@ public class Curtida implements Serializable {
     @Id
     @Column(name = "id")
     private Long id;
+    private Long count;
 
     public Curtida(Long id) {
-        this.setId(id);
+        this.id = id;
     }
 
     public Long getId() {
@@ -24,20 +26,16 @@ public class Curtida implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Curtida curtida)) return false;
+        return Objects.equals(id, curtida.id) && Objects.equals(count, curtida.count);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Curtida other = (Curtida) obj;
-        return Objects.equals(id, other.id);
+    public int hashCode() {
+        return Objects.hash(id, count);
     }
 }
