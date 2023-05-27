@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "diretores")
+@Table(name = "diretor")
 public class Diretor implements Serializable {
 	private static final long serialVersionUID = 1L;
 

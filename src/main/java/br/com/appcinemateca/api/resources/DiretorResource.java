@@ -2,10 +2,9 @@
 package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
-import br.com.appcinemateca.api.domain.Ator;
-import br.com.appcinemateca.api.dto.AtorDTO;
-//import br.com.appcinemateca.api.dto.CadastroDTO;
-import br.com.appcinemateca.api.services.interfaces.AtorServices;
+import br.com.appcinemateca.api.domain.Diretor;
+import br.com.appcinemateca.api.dto.DiretorDTO;
+import br.com.appcinemateca.api.services.interfaces.DiretorServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,29 +25,29 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 //@CrossOrigin
 @RestController
-@RequestMapping(value = "/ator")
-@Tag(name = "ator", description= "Endpoints for Managing ator")
-public class AtorResource {
+@RequestMapping(value = "/diretor")
+@Tag(name = "diretor", description= "Endpoints for Managing diretor")
+public class DiretorResource {
 
 	private static final String ID = "/{id}";
-	private final String Ator = "ator";
+	private final String Diretor = "diretor";
 
 	@Autowired
 	private ModelMapper mapper;
 
 	@Autowired
-	private AtorServices service;
+	private DiretorServices service;
 
 
 	@GetMapping(produces = {MediaType.APPLICATION_JSON,
 			MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
 	@Operation(summary = "Finds all acts", description = "Finds all acts",
-		tags = {"atores"},
+		tags = {"diretores"},
 		responses = {@ApiResponse(description = "Success", responseCode = "200", 
 		content = {
 				@Content(
 						mediaType = "application/json",
-						array = @ArraySchema(schema = @Schema(implementation = AtorDTO.class))
+						array = @ArraySchema(schema = @Schema(implementation = DiretorDTO.class))
 						)
 						}),
 			@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -57,12 +56,12 @@ public class AtorResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<AtorDTO>> findAll() {
+	public ResponseEntity<CollectionModel<DiretorDTO>> findAll() {
 
-		List<Ator> list = service.findAll();
-		List<AtorDTO> listDTO = list.stream().map(x -> mapper.map(x, AtorDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(AtorResource.class).findAll()).withSelfRel();
-		CollectionModel<AtorDTO> result = CollectionModel.of(listDTO, link);
+		List<Diretor> list = service.findAll();
+		List<DiretorDTO> listDTO = list.stream().map(x -> mapper.map(x, DiretorDTO.class)).collect(Collectors.toList());
+		var link = linkTo(methodOn(DiretorResource.class).findAll()).withSelfRel();
+		CollectionModel<DiretorDTO> result = CollectionModel.of(listDTO, link);
 		// return result;
 		return ResponseEntity.ok().body(result);
 
@@ -72,10 +71,10 @@ public class AtorResource {
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 
 			MediaType.APPLICATION_XML,MediaType.APPLICATION_YML})
 	@Operation(summary = "Finds a register", description = "Finds a Register",
-	tags = {"Ator"},
+	tags = {"Diretor"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = AtorDTO.class))
+			@Content(schema = @Schema(implementation = DiretorDTO.class))
 		),
 		@ApiResponse(description = "No Content", responseCode = "204", content = @Content),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -84,10 +83,10 @@ public class AtorResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<AtorDTO> findById(@PathVariable Long id) {
-		Ator e = service.findById(id);
-		var v = mapper.map(e, AtorDTO.class);
-		//v.add(linkTo(methodOn(AtorResource.class).findById(id)).withSelfRel());
+	public ResponseEntity<DiretorDTO> findById(@PathVariable Long id) {
+		Diretor e = service.findById(id);
+		var v = mapper.map(e, DiretorDTO.class);
+		//v.add(linkTo(methodOn(DiretorResource.class).findById(id)).withSelfRel());
 
 		return ResponseEntity.ok().body(v);
 	}
@@ -104,19 +103,19 @@ public class AtorResource {
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 					MediaType.APPLICATION_YML})
 	@Operation(summary = "Add a Register", description = "Add a Register",
-	tags = {"ator"},
+	tags = {"diretor"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = AtorDTO.class))
+			@Content(schema = @Schema(implementation = DiretorDTO.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<AtorDTO> create(@RequestBody AtorDTO obj) {
-		var entity = mapper.map(obj, AtorDTO.class);
-		var vo = mapper.map(service.create(entity), AtorDTO.class);
+	public ResponseEntity<DiretorDTO> create(@RequestBody DiretorDTO obj) {
+		var entity = mapper.map(obj, DiretorDTO.class);
+		var vo = mapper.map(service.create(entity), DiretorDTO.class);
 		//vo.add(linkTo(methodOn(AtorResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
@@ -131,7 +130,7 @@ public class AtorResource {
 	tags = {"ator"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = Ator.class))
+			@Content(schema = @Schema(implementation = Diretor.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -139,9 +138,9 @@ public class AtorResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<AtorDTO> update(@PathVariable Long id, @RequestBody AtorDTO obj) {
-		var entity = mapper.map(obj, AtorDTO.class);
-		var vo = mapper.map(service.update(entity), AtorDTO.class);
+	public ResponseEntity<DiretorDTO> update(@PathVariable Long id, @RequestBody DiretorDTO obj) {
+		var entity = mapper.map(obj, DiretorDTO.class);
+		var vo = mapper.map(service.update(entity), DiretorDTO.class);
 		//vo.add(linkTo(methodOn(AtorResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
@@ -159,7 +158,7 @@ public class AtorResource {
 	}
 )
 	@DeleteMapping(value = ID)
-	public ResponseEntity<AtorDTO> delete(@PathVariable Long id) {
+	public ResponseEntity<DiretorDTO> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}

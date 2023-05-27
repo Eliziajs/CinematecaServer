@@ -3,6 +3,7 @@ package br.com.appcinemateca.api.domain;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -13,10 +14,18 @@ public class Curtida implements Serializable {
     @Id
     @Column(name = "id")
     private Long id;
-    private Long count;
+    @Column(name = "qtd")
+    public Long qtd;
+    @Column(name = "date")
+    private Date date;
 
-    public Curtida(Long id) {
+    public Curtida() {
+    }
+
+    public Curtida(Long id, Long qtd, Date date) {
         this.id = id;
+        this.qtd = qtd;
+        this.date = date;
     }
 
     public Long getId() {
@@ -27,15 +36,32 @@ public class Curtida implements Serializable {
         this.id = id;
     }
 
+    public Long getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(Long qtd) {
+        this.qtd = qtd;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Curtida curtida)) return false;
-        return Objects.equals(id, curtida.id) && Objects.equals(count, curtida.count);
+        return Objects.equals(id, curtida.id) && Objects.equals(qtd, curtida.qtd) && Objects.equals(date, curtida.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, count);
+        return Objects.hash(id, qtd, date);
     }
 }
+

@@ -8,7 +8,7 @@ import java.util.Objects;
 public class CadastroDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    Long id;
 
     private String nome;
 
