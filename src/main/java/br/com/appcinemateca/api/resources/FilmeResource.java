@@ -2,10 +2,9 @@
 package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
-import br.com.appcinemateca.api.domain.Ator;
-import br.com.appcinemateca.api.dto.AtorDTO;
-//import br.com.appcinemateca.api.dto.CadastroDTO;
-import br.com.appcinemateca.api.services.interfaces.AtorServices;
+import br.com.appcinemateca.api.dto.FilmeDTO;
+import br.com.appcinemateca.api.domain.Filme;
+import br.com.appcinemateca.api.services.interfaces.FilmeServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,29 +25,29 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 //@CrossOrigin
 @RestController
-@RequestMapping(value = "/ator")
-@Tag(name = "ator", description= "Endpoints for Managing ator")
-public class AtorResource {
+@RequestMapping(value = "/filmes")
+@Tag(name = "filme", description= "Endpoints for Managing filme")
+public class FilmeResource {
 
 	private static final String ID = "/{id}";
-	private final String Ator = "ator";
+	private final String Filme = "filme";
 
 	@Autowired
 	private ModelMapper mapper;
 
 	@Autowired
-	private AtorServices service;
+	private FilmeServices service;
 
 
 	@GetMapping(produces = {MediaType.APPLICATION_JSON,
 			MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
-	@Operation(summary = "Finds all acts", description = "Finds all acts",
-		tags = {"atores"},
+	@Operation(summary = "Finds all acts", description = "Finds all films",
+		tags = {"filmes"},
 		responses = {@ApiResponse(description = "Success", responseCode = "200", 
 		content = {
 				@Content(
 						mediaType = "application/json",
-						array = @ArraySchema(schema = @Schema(implementation = AtorDTO.class))
+						array = @ArraySchema(schema = @Schema(implementation = FilmeDTO.class))
 						)
 						}),
 			@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -57,12 +56,12 @@ public class AtorResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<AtorDTO>> findAll() {
+	public ResponseEntity<CollectionModel<FilmeDTO>> findAll() {
 
-		List<Ator> list = service.findAll();
-		List<AtorDTO> listDTO = list.stream().map(x -> mapper.map(x, AtorDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(AtorResource.class).findAll()).withSelfRel();
-		CollectionModel<AtorDTO> result = CollectionModel.of(listDTO, link);
+		List<Filme> list = service.findAll();
+		List<FilmeDTO> listDTO = list.stream().map(x -> mapper.map(x, FilmeDTO.class)).collect(Collectors.toList());
+		var link = linkTo(methodOn(FilmeResource.class).findAll()).withSelfRel();
+		CollectionModel<FilmeDTO> result = CollectionModel.of(listDTO, link);
 		// return result;
 		return ResponseEntity.ok().body(result);
 
@@ -72,10 +71,10 @@ public class AtorResource {
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 
 			MediaType.APPLICATION_XML,MediaType.APPLICATION_YML})
 	@Operation(summary = "Finds a register", description = "Finds a Register",
-	tags = {"Ator"},
+	tags = {"Filme"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = AtorDTO.class))
+			@Content(schema = @Schema(implementation = FilmeDTO.class))
 		),
 		@ApiResponse(description = "No Content", responseCode = "204", content = @Content),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -84,9 +83,9 @@ public class AtorResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<AtorDTO> findById(@PathVariable Long id) {
-		Ator e = service.findById(id);
-		var v = mapper.map(e, AtorDTO.class);
+	public ResponseEntity<FilmeDTO> findById(@PathVariable Long id) {
+		Filme e = service.findById(id);
+		var v = mapper.map(e, FilmeDTO.class);
 		//v.add(linkTo(methodOn(AtorResource.class).findById(id)).withSelfRel());
 
 		return ResponseEntity.ok().body(v);
@@ -104,19 +103,19 @@ public class AtorResource {
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 					MediaType.APPLICATION_YML})
 	@Operation(summary = "Add a Register", description = "Add a Register",
-	tags = {"ator"},
+	tags = {"filme"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = AtorDTO.class))
+			@Content(schema = @Schema(implementation = FilmeDTO.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<AtorDTO> create(@RequestBody AtorDTO obj) {
-		var entity = mapper.map(obj, AtorDTO.class);
-		var vo = mapper.map(service.create(entity), AtorDTO.class);
+	public ResponseEntity<FilmeDTO> create(@RequestBody FilmeDTO obj) {
+		var entity = mapper.map(obj,FilmeDTO.class);
+		var vo = mapper.map(service.create(entity), FilmeDTO.class);
 		//vo.add(linkTo(methodOn(AtorResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
@@ -128,10 +127,10 @@ public class AtorResource {
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 					MediaType.APPLICATION_YML})
 	@Operation(summary = "Updates a Register", description = "Updates a register",
-	tags = {"ator"},
+	tags = {"filme"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = Ator.class))
+			@Content(schema = @Schema(implementation = Filme.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -139,16 +138,16 @@ public class AtorResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<AtorDTO> update(@PathVariable Long id, @RequestBody AtorDTO obj) {
-		var entity = mapper.map(obj, AtorDTO.class);
-		var vo = mapper.map(service.update(entity), AtorDTO.class);
+	public ResponseEntity<FilmeDTO> update(@PathVariable Long id, @RequestBody FilmeDTO obj) {
+		var entity = mapper.map(obj, FilmeDTO.class);
+		var vo = mapper.map(service.update(entity), FilmeDTO.class);
 		//vo.add(linkTo(methodOn(AtorResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}
 	
 	@Operation(summary = "Deletes a Register", description = "Deletes a Register",
-	tags = {"Ator"},
+	tags = {"Filme"},
 	responses = {@ApiResponse(description = "No Content", responseCode = "204", 
 	content = @Content		
 		),
@@ -159,7 +158,7 @@ public class AtorResource {
 	}
 )
 	@DeleteMapping(value = ID)
-	public ResponseEntity<AtorDTO> delete(@PathVariable Long id) {
+	public ResponseEntity<FilmeDTO> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
