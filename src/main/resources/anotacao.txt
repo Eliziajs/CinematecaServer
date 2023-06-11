@@ -42,3 +42,5 @@ spring.jpa.properties.hibernate.use_sql_comments=true
 teste de merge token
 
 - verificara a class SecurityConfig Atualização de pacote e metodos depreciados
+
+TESTE DE PC
