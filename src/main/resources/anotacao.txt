@@ -43,5 +43,4 @@ teste de merge token
 
 - verificara a class SecurityConfig Atualização de pacote e metodos depreciados
 
-TESTE DE PC
-TESTE DE PC 2
+TESTE DE laptop
