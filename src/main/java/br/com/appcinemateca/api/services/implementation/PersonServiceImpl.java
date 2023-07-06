@@ -27,7 +27,7 @@ public class PersonServiceImpl implements PersonServices {
     public Person findById(Long id) {
         Optional<Person> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
-    };   
+    }
     @Override
     public List<Person> findAll() {
         return repository.findAll();

@@ -1,7 +1,5 @@
 package br.com.appcinemateca.api;
 
-import br.com.appcinemateca.api.repositories.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ApiApplication implements CommandLineRunner{
 
-    @Autowired
-    private PersonRepository repository;
+    //@Autowired
+    //private PersonRepository repository;
 
     public static void main(String[] args) {
         SpringApplication.run(ApiApplication.class, args);
