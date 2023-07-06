@@ -2,8 +2,9 @@
 package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
-import br.com.appcinemateca.api.dto.CurtidaDTO;
 import br.com.appcinemateca.api.domain.Curtida;
+import br.com.appcinemateca.api.dto.CurtidaDTO;
+import br.com.appcinemateca.api.services.interfaces.CurtidaServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,13 +30,13 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class CurtidaResource {
 
 	private static final String ID = "/{id}";
-	private final String Curtida = "curtida";
+	//private final String Curtida = "curtida";
 
 	@Autowired
 	private ModelMapper mapper;
 
 	@Autowired
-	private CurtidaResource service;
+	private CurtidaServices service;
 
 
 	@GetMapping(produces = {MediaType.APPLICATION_JSON,
@@ -58,7 +59,7 @@ public class CurtidaResource {
 	public ResponseEntity<CollectionModel<CurtidaDTO>> findAll() {
 
 		List<Curtida> list = service.findAll();
-		List<CurtidaDTO> listDTO = list.stream().map(x -> mapper.map(x, Curtida.class)).collect(Collectors.toList());
+		List<CurtidaDTO> listDTO = list.stream().map(x -> mapper.map(x, CurtidaDTO.class)).collect(Collectors.toList());
 		var link = linkTo(methodOn(CurtidaResource.class).findAll()).withSelfRel();
 		CollectionModel<CurtidaDTO> result = CollectionModel.of(listDTO, link);
 		// return result;
@@ -83,7 +84,7 @@ public class CurtidaResource {
 	}
 )
 	public ResponseEntity<CurtidaDTO> findById(@PathVariable Long id) {
-		ResponseEntity<CurtidaDTO> e = service.findById(id);
+		Curtida e = service.findById(id);
 		var v = mapper.map(e, CurtidaDTO.class);
 		//v.add(linkTo(methodOn(AtorResource.class).findById(id)).withSelfRel());
 
@@ -119,7 +120,6 @@ public class CurtidaResource {
 
 		return ResponseEntity.ok().body(vo);
 	}
-
 
 	@PutMapping(value = ID,consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 			MediaType.APPLICATION_YML}, 

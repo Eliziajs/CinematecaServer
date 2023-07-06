@@ -28,7 +28,7 @@ public class CurtidaServiceImpl implements CurtidaServices {
     public Curtida findById(Long id) {
         Optional<Curtida> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
-    };   
+    }
     @Override
     public List<Curtida> findAll() {
 
