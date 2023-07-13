@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+
+
+
+<div class="container">
+  <div class= "row my-5">
+      <div div class="col-4 justify-content-center">
+      <h1 class="display-5 text-center">Faça seu login</h1>
+      <?php
+        if(!empty($erros)):
+          foreach($erros as $erro):
+            echo $erro;
+          endforeach;
+        endif; 
+      ?>
+      <form action="" method="POST">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Login</label>
+          <input type="text" class="form-control" name="login" id="exampleInputText"  placeholder="Seu login">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Senha</label>
+          <input type="password" class="form-control" name="senha" id="exampleInputPassword1" placeholder="Sua senha">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Manter conectado</label>
+        </div>
+        <button type="submit" class="btn btn-primary" name="btn-login">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>

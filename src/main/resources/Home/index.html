@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+ </head>
+  <body>
+#CABEÇALHO
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+  </head>
+  <body>
+    <header>
+     <!-- NAV -->
+      <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-danger"> 
+        <div class="container">
+          <a class="navbar-brand" href=""><h4>Rede de leitura</h4></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSite">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="">Início</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Fórum
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Resenha da hora</a>
+                  <a class="dropdown-item" href="topico.php">Crie novo tópico de discussão</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Conheça nossa biblioteca virtual</a>
+                </div>
+              </li>
+            </ul>
+              <form class="form-inline my-2 my-lg">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                <button class="btn btn-dark my-2 my-sm-0" type="submit">Ok</button>
+              </form>
+              <div class="collapse navbar-collapse justify-content-center" id="navbarSite">
+              <h4>Olá <?php echo $dados['nome'];?>!</h4>
+              </div>
+          </div>
+          <a class="btn btn-dark" href="logout.php" role="button">Sair</a>
+        </div>
+      </nav>
+
+<div id="carouselSite" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselSite" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselSite" data-slide-to="1"></li>
+        <li data-target="#carouselSite" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="../../../../../../../../Desktop/Codigo/FrontEnd%20cinemateca/Projeto_redeLeitura_v31/views/images/img-1teste.jpg" alt="First slide">
+            <div class="carousel-caption ">
+                <h1>Leitura & Conhecimento</h1>
+                <p class="lead">"Todo Ser humano por mais limitado que seja pode se desenvolver ilimitadamente". Goethe</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="../../../../../../../../Desktop/Codigo/FrontEnd%20cinemateca/Projeto_redeLeitura_v31/views/images/img-2teste.jpg" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block ">
+                <h1>Troca & Saberes</h1>
+                <p class="lead">O produto do conhecimento é elaborado socialmente</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="../../../../../../../../Desktop/Codigo/FrontEnd%20cinemateca/Projeto_redeLeitura_v31/views/images/img-3teste.jpg" alt="Third slide">
+            <div class="carousel-caption d-none d-md-block ">
+                <h1>Teia filosófica</h1>
+                <p class="lead"> Razão, o melhor presente que humanidade recebeu...</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselSite" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselSite" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+    </a>
+</div>
+
+
+<!-- CONTAINER SCROLL --> 
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <h1 class="display-3">Seja Bem-Vindo</h1>
+            <p class="lead lead text-rigth"> Que nossos debates sejam ricos em conteúdo, solidariedade e gentileza.</p>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-3">
+            <nav id="navbarVertical" class="navbar navbar-light bg-light">
+                <nav class="nav nav-pills flex-column">
+                <a class="nav-link" href="#item1">Apresentação</a>
+                <a class="nav-link" href="#item2">O que é a Rede de Leitura</a>
+                <a class="nav-link" href="#item3">Como funciona</a>
+                <a class="nav-link" href="#item4">Quais as regras básicas</a>
+                <a class="nav-link" href="#item5">Quais os temas em discussão</a>
+                <a class="nav-link" href="#item6">Novo tópico</a>
+                <a class="nav-link" href="#item7">Novo tópico</a>
+                <a class="nav-link" href="#item8">Novo tópico</a>
+                <a class="nav-link" href="pagForm.html">Crie um novo tema</a>
+                </nav>
+            </nav>
+        </div>
+
+        <div class="col-9">
+            <div data-spy="scroll" data-target="#navbarVertical" data-offset="0" class="scrollspySite">
+                <h4 id="item1">Apresentação</h4>
+                <p>Em um sentido geral, a filosofia é associada à sabedoria, cultura intelectual e à
+                busca de conhecimento. Nesse sentido, todas as culturas e sociedades letradas fazem 
+                perguntas filosóficas como "como viver" e "qual é a natureza da realidade". Como uma
+                concepção ampla e imparcial, a filosofia serve de investigação fundamentada em assuntos
+                como realidade, moralidade e vida em todas as civilizações do mundo</p>
+                <h5 id="item1">subtitulo do assunto</h5>
+                <p>Historicamente, a "filosofia" englobava qualquer corpo de conhecimento.[16] Desde o 
+                    tempo do filósofo grego antigo Aristóteles até o século XIX, a "filosofia natural" 
+                    abrangia a astronomia, a medicina e a física.[17] Por exemplo a obra de Newton, 
+                    Philosophiæ Naturalis Principia Mathematica (1687) mais tarde classificada como um
+                    livro de física. No século XIX, o crescimento das universidades de pesquisa modernas 
+                    levou a filosofia acadêmica e outras disciplinas a se profissionalizar e se especializar</p>
+                <h4 id="item2">O que é a Rede de Leitura</h4>
+                <p>Sociologia é um estudo da sociedade, padrões de relações sociais, interação social e cultura da 
+                    vida cotidiana. [1] [2] É uma ciência social que utiliza vários métodos de investigação empírica 
+                    e análise crítica para desenvolver um corpo de conhecimento sobre ordem social, aceitação e 
+                    ou evolução social.[3] Sociologia também é definida como a ciência geral da sociedade. Enquanto 
+                    alguns sociólogos realizam pesquisas que podem ser aplicadas diretamente à política social e ao
+                    bem - estar, outros se concentram principalmente em refinar a compreensão teórica dos processos
+                    sociais. O assunto varia do nível de micro-sociologia da agência e interação individual ao nível
+                    macro dos sistemas e da estrutura social</p>
+                <h4 id="item3">Como funciona</h4>
+                <p>O termo política, que se expandiu graças à influência de Aristóteles. Aquele filósofo categorizava 
+                    funções e divisão do Estado e as várias formas de Governo, com o significado mais comum de arte ou ciência
+                    do Governo; desde a origem ocorreu uma transposição de significado das coisas qualificadas como político,
+                    para a forma de saber mais ou menos organizado sobre esse mesmo conjunto de coisas.</p>
+                <h4 id="item4">Quais as regras básicas</h4>
+                <p>Pode-se afirmar que há poucas décadas a antropologia conquistou seu lugar entre as ciências.
+                    Primeiramente, foi considerada como a história natural e física do homem e do seu processo evolutivo,
+                    no espaço e no tempo. Se por um lado essa concepção vinha satisfazer o significado literal da palavra,
+                    por outro restringia o seu campo de estudo às características físicas do ser humano. Essa postura
+                    marcou e limitou os estudos antropológicos por largo tempo, privilegiando a antropometria, 
+                    ciência que trata das mensurações das propriedades físicas do ser humano.
+                </p>
+                <h4 id="item5">Quais os temas em discussão</h4>
+                <p>Economia política é a ciência que estuda as relações sociais de produção,
+                    circulação e distribuição de bens materiais que visam atender as necessidades humanas,
+                    identificando as leis que regem tais relações.
+                </p>
+                <h4 id="item6">Novo tópico</h4>
+                <p>Educação engloba os processos de ensinar e de aprender.
+
+                    No centro de um sistema educativo deve situar-se o ser humano a educar, num horizonte de plenitude.
+                    A tarefa educativa consiste, na verdade, na capacidade de identificar e de acompanhar esta presente 
+                    inquietação do homem, mantendo vivo o amor pelo saber, despertando o coração e pondo em marcha a sua 
+                    razão e a sua liberdade[1], tal liberdade construída pelos tijolos da autonomia do indivíduo[2].</p>
+                <h4 id="item7">Novo tópico</h4>
+                <p>Cultura (do latim cultura)[1] é um conceito de várias acepções, sendo a mais corrente, especialmente
+                    na antropologia, a definição genérica formulada por Edward B. Tylor segundo a qual cultura é "todo
+                    aquele complexo que inclui o conhecimento, as crenças, a arte, a moral, a lei, os costumes e todos
+                    os outros hábitos e capacidades adquiridos pelo homem como membro de uma sociedade"</p>
+                <h4 id="item8">Novo tópico</h4>
+                <p>Arte (do termo latino ars, significando técnica e/ou habilidade) pode ser entendida como a atividade 
+                    humana ligada às manifestações de ordem estética ou comunicativa, realizada por meio de uma grande 
+                    variedade de linguagens,[1] tais como: arquitetura, desenho, escultura, pintura, escrita, música, 
+                    dança, teatro e cinema, em suas variadas combinações.[2] O processo criativo se dá a partir da percepção
+                    com o intuito de expressar emoções e ideias, objetivando um significado único e diferente para cada obra.[3]</p>
+                </br></br>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- CARD -->
+    <div class="row mb-5 my-5">
+    <div class="col-sm-4">
+        <div class="card">
+        <img class="card-img-top" src="../../../../../../../../Desktop/Codigo/FrontEnd%20cinemateca/Projeto_redeLeitura_v31/views/images/logoLivro.png" alt="">
+            <div class="card-body">
+            <h4 class="card-title">Projeto Os Livreiros</h4>
+            <h6 class="subtitle mb-2 text-muted">Que tal doar, trocar ou pechinchar livros</h6>
+            <p class="card-text text-justify"> escritor colombiano Gabriel García Márquez, 
+                Prêmio Nobel da Literatura em 1982, e é atualmente 
+                considerada uma das obras mais importantes da literatura 
+                latino-americana.da literatura 
+                latino-americana. </p>
+            <a href="#" class="card-link btn btn-danger" data-toggle="modal" data-target="#siteModal">Saiba mais</a>
+            <a href="#" class="card-link">Baixe aqui</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+        <img class="card-img-top" src="../../../../../../../../Desktop/Codigo/FrontEnd%20cinemateca/Projeto_redeLeitura_v31/views/images/sapiensVoltaDeuMerda.jpg" alt="">
+        <div class="card-body">
+            <h4 class="card-title">Sapiens</h4>
+            <h6 class="subtitle mb-2 text-muted">Uma breve história  humanidade</h6>
+            <p class="card-text text-justify">é um livro de Yuval Harari publicado primeiramente em 
+            2014, embora tenha sido lançado originalmente em Israel em 2011, com o
+                título Uma Breve História do Gênero Humano.sido lançado originalmente em Israel em 2011,
+                com o título Uma Breve História do Gênero Humano.Breve História do Gênero Humano.sido lançado 
+                originalmente em Israel em 2011
+                </p>
+                <a href="#" class="card-link" data-toggle="modal" data-target="#siteModal2">Saiba mais</a>
+            <a href="#" class="card-link">Baixe aqui</a>
+        </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+        <img class="card-img-top" src="../../../../../../../../Desktop/Codigo/FrontEnd%20cinemateca/Projeto_redeLeitura_v31/views/images/republicaBugres.jpg" alt="">
+        <div class="card-body">
+            <h4 class="card-title">A Republica dos Bugres</h4>
+            <h6 class="subtitle mb-2 text-muted">Um passeio literario pela história do Brasil</h6>
+            <p class="card-text text-justify">Romance histórico, em tom picaresco, 'A república dos bugres'
+                revisita a História do Brasil desde a chegada da família real portuguesa até a 
+                Proclamação da República.Um passeio literario pela história do Brasil</h6>
+            Romance histórico, em tom picaresco, 'A república dos bugres'
+            revisita a História do Brasil desde a chegada da família real portuguesa até a 
+            Proclamação da República. </p>
+            <a href="#" class="card-link">Saiba mais</a>
+            <a href="#" class="card-link">Baixe aqui</a>
+        </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+ <!-- JUMBOTRON -->
+<div class="jumbotron jumbotron-fluid mb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 class="display-4"><i class="fa fa-video-camera text-primary" aria-hidden="true"></i>  Club do livro</h1>
+        <p class="lead"> Que tal um café com leitura no club do livro</p>
+        <hr>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ul class="nav nav-pills justify-content-center mb-4" id="pills-nav" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="nav-pills-01" data-toggle="pill" href="#nav-item-01">Café com história</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-pills-02" data-toggle="pill" href="#nav-item-02">Cappuchino com literatura</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-pills-03" data-toggle="pill" href="#nav-item-03" >Chocolate com Sociologia</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="nav-pills-content">
+          <div class="tab-pane fade show active" id="nav-item-01" role="tabpanel">
+            <div class="tab-content" id="nav-pills-content">
+              <div class="tab-pane fade show active" id="nav-item-01" role="tabpanel">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/KHnnNOkryMg"></iframe>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <p class="text-justify">Em um sentido geral, a filosofia é associada à sabedoria, cultura intelectual e à busca de conhecimento.
+                       Nesse sentido, todas as culturas e sociedades letradas fazem perguntas filosóficas como "como viver" e 
+                       "qual é a natureza da realidade". Como uma concepção ampla e imparcial, a filosofia serve de investigação 
+                       fundamentada em assuntos como realidade, moralidade e vida em todas as civilizações do mundo.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-item-02" role="tabpanel">
+            <div class="tab-content" id="nav-pills-content">
+              <div class="tab-pane fade show active" id="nav-item-02" role="tabpanel">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Arbexm74o2k"></iframe>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <p class="text-justify">Em um sentido geral, a filosofia é associada à sabedoria, cultura intelectual e à busca de conhecimento.
+                       Nesse sentido, todas as culturas e sociedades letradas fazem perguntas filosóficas como "como viver" e 
+                       "qual é a natureza da realidade". Como uma concepção ampla e imparcial, a filosofia serve de investigação 
+                       fundamentada em assuntos como realidade, moralidade e vida em todas as civilizações do mundo.</p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-item-03" role="tabpanel">
+            <div class="tab-content" id="nav-pills-content">
+              <div class="tab-pane fade show active" id="nav-item-03" role="tabpanel">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/T_tUOFvGEWg"></iframe>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <p class="text-justify">Em um sentido geral, a filosofia é associada à sabedoria, cultura intelectual e à busca de conhecimento.
+                       Nesse sentido, todas as culturas e sociedades letradas fazem perguntas filosóficas como "como viver" e 
+                       "qual é a natureza da realidade". Como uma concepção ampla e imparcial, a filosofia serve de investigação 
+                       fundamentada em assuntos como realidade, moralidade e vida em todas as civilizações do mundo.</p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+
