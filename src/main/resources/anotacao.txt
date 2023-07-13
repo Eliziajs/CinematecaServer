@@ -47,6 +47,3 @@ TESTE DE laptop
 TESTE DE PC 2
 teste de laptop 2
 teste pc 3
-
-proteger as classes para acessar somente logado
-
