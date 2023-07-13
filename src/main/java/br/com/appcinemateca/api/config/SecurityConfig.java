@@ -67,8 +67,8 @@ public class SecurityConfig{
 				.and()
 				.cors()
 				.and()
-				//.formLogin()
-				//.and()
+				.formLogin()
+				.and()
 				.apply(new JwtConfigurer(tokenProvider));
 		return http.build();
 	}
