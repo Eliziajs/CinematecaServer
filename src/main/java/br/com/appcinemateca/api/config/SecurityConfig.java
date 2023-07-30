@@ -60,15 +60,16 @@ public class SecurityConfig{
 						"/auth/refresh",
 						"/api-docs/**",
 						"/swagger-ui/**",
-						"/v3/**")
+						"/v3/**",
+						"/**")//usando para teste
 				.permitAll()
 				.requestMatchers("/**").authenticated()
 				.requestMatchers("/users").denyAll()
 				.and()
 				.cors()
 				.and()
-				.formLogin()
-				.and()
+				//.formLogin()
+				//.and()
 				.apply(new JwtConfigurer(tokenProvider));
 		return http.build();
 	}
