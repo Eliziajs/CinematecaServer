@@ -2,6 +2,7 @@
 
 package br.com.appcinemateca.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-@Table(name = "filmes")
+@Table(name = "filme")
 public class Filme implements Serializable {
 	private static final long serialVersionUID = 1l;
 
@@ -26,6 +27,8 @@ public class Filme implements Serializable {
 	@Column(name = "dataCadastro")
 	private Date dataCadastro = new Date();
 
+
+
 	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "genero_id")
@@ -40,10 +43,15 @@ public class Filme implements Serializable {
 	@OneToMany(mappedBy = "id.filme") // id.ator estudar o caso
 	private Set<Personagem> personagem = new HashSet<>();
 
-	/*List<Pessoa> pessoas = new ArrayList<>();*/
+	List<Person> pessoas = new ArrayList<>();
+	@JsonBackReference
+	@OneToMany(mappedBy = "filme")
+	List<Curtida> curtidas = new ArrayList<>();
 
+	public List<Curtida> getCurtida() {
+		return curtidas;
+	}
 	public Filme() {
-
 	}
 
 	public Filme(Long id, String titulo, Integer ano, String sinopse, Genero generos, Diretor diretor, Date dataCadastro) {

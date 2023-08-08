@@ -1,14 +1,12 @@
 package br.com.appcinemateca.api.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="pessoa")
@@ -24,8 +22,12 @@ public class Person implements Serializable  {
     private String email;
     @Column
     private String password;
-    
-    
+	@JsonBackReference
+	@OneToMany(mappedBy = "person")
+	List<Curtida> curtidas = new ArrayList<>();
+	public List<Curtida> getCurtida() {
+		return curtidas;
+	}
 	public Person() {
 		super();
 	}

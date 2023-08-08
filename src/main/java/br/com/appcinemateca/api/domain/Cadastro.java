@@ -25,7 +25,6 @@ public class Cadastro implements Serializable {
         private Date data = new Date();
 
         public Cadastro() {
-
         }
 
     public Cadastro(Long id, String nome, Date nascimento, String email, int status, Date data) {

@@ -1,5 +1,6 @@
 package br.com.appcinemateca.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -14,17 +15,30 @@ public class Curtida implements Serializable {
     @Id
     @Column(name = "id")
     private Long id;
-    @Column(name = "qtd")
-    public Long qtd;
-    @Column(name = "date")
-    private Date date;
+    @Column(name = "quantidade")
+    public Long quantidade;
+    @Column(name = "data")
+    private Date date = new Date();
+
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+    public Person getPerson() {
+        return person;
+    }
+
+   @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "filme_id")
+    private Filme filme;
 
     public Curtida() {
     }
 
-    public Curtida(Long id, Long qtd, Date date) {
+    public Curtida(Long id, Long quantidade, Date date) {
         this.id = id;
-        this.qtd = qtd;
+        this.quantidade = quantidade;
         this.date = date;
     }
 
@@ -37,11 +51,11 @@ public class Curtida implements Serializable {
     }
 
     public Long getQtd() {
-        return qtd;
+        return quantidade;
     }
 
     public void setQtd(Long qtd) {
-        this.qtd = qtd;
+        this.quantidade = quantidade;
     }
 
     public Date getDate() {
@@ -56,12 +70,12 @@ public class Curtida implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Curtida curtida)) return false;
-        return Objects.equals(id, curtida.id) && Objects.equals(qtd, curtida.qtd) && Objects.equals(date, curtida.date);
+        return Objects.equals(id, curtida.id) && Objects.equals(quantidade, curtida.quantidade) && Objects.equals(date, curtida.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, qtd, date);
+        return Objects.hash(id, quantidade, date);
     }
 }
 
