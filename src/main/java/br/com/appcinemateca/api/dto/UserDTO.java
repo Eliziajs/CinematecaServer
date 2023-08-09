@@ -2,30 +2,34 @@ package br.com.appcinemateca.api.dto;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 
-public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
+public class UserDTO extends RepresentationModel<UserDTO> implements Serializable {
 	private static final long serialVersionUID = 1l;
 
-    private Long id;
-    private String name;
-    private String email;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String password;
-    
-	public PersonDTO() {
+	private Long id;
+
+	private String userName;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private String password;
+	private String email;
+
+	public UserDTO() {
 		super();
 	}
 
-	public PersonDTO(Long id, String name, String email, String password) {
+	public UserDTO(Long id, String userName, String email, String password) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.userName = userName;
 		this.email = email;
 		this.password = password;
 	}
@@ -38,12 +42,12 @@ public class PersonDTO extends RepresentationModel<PersonDTO> implements Seriali
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String name) {
+		this.userName = userName;
 	}
 
 	public String getEmail() {

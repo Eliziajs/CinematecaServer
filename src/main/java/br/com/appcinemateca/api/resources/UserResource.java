@@ -1,9 +1,8 @@
 package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
-import br.com.appcinemateca.api.domain.Person;
-import br.com.appcinemateca.api.dto.PersonDTO;
-import br.com.appcinemateca.api.services.interfaces.PersonServices;
+import br.com.appcinemateca.api.domain.User;
+import br.com.appcinemateca.api.dto.UserDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,7 +25,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @RequestMapping(value = "/person")
 @Tag(name = "usuarios", description= "Endpoints for Managing Usuarios")
-public class PersonResource {
+public class UserResource {
 
 	private static final String ID = "/{id}";
 
@@ -34,7 +33,7 @@ public class PersonResource {
 	private ModelMapper mapper;
 
 	@Autowired
-	private PersonServices service;
+	private UserResource service;
 
 	// como iterar uma coleção para cada objeto?
 	@GetMapping(produces = {MediaType.APPLICATION_JSON, 
@@ -45,7 +44,7 @@ public class PersonResource {
 		content = {
 				@Content(
 						mediaType = "application/json",
-						array = @ArraySchema(schema = @Schema(implementation = PersonDTO.class))
+						array = @ArraySchema(schema = @Schema(implementation = UserDTO.class))
 						)
 						}),
 			@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -54,12 +53,12 @@ public class PersonResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<PersonDTO>> findAll() {
+	public ResponseEntity<CollectionModel<UserDTO>> findAll() {
 
-		List<Person> list = service.findAll();
-		List<PersonDTO> listDTO = list.stream().map(x -> mapper.map(x, PersonDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(PersonResource.class).findAll()).withSelfRel();
-		CollectionModel<PersonDTO> result = CollectionModel.of(listDTO, link);
+		List<User> list = service.findAll();
+		List<UserDTO> listDTO = list.stream().map(x -> mapper.map(x, UserDTO.class)).collect(Collectors.toList());
+		var link = linkTo(methodOn(UserResource.class).findAll()).withSelfRel();
+		CollectionModel<UserDTO> result = CollectionModel.of(listDTO, link);
 		// return result;
 		return ResponseEntity.ok().body(result);
 
@@ -71,7 +70,7 @@ public class PersonResource {
 	tags = {"Usuario"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = PersonDTO.class))			
+			@Content(schema = @Schema(implementation = UserDTO.class))
 		),
 		@ApiResponse(description = "No Content", responseCode = "204", content = @Content),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -80,10 +79,10 @@ public class PersonResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<PersonDTO> findById(@PathVariable Long id) {
-		Person e = service.findById(id);
-		var v = mapper.map(e, PersonDTO.class);
-		v.add(linkTo(methodOn(PersonResource.class).findById(id)).withSelfRel());
+	public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
+		User e = service.findById(id);
+		var v = mapper.map(e, UserDTO.class);
+		v.add(linkTo(methodOn(UserResource.class).findById(id)).withSelfRel());
 
 		return ResponseEntity.ok().body(v);
 	}
@@ -103,17 +102,17 @@ public class PersonResource {
 	tags = {"Usuario"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = PersonDTO.class))			
+			@Content(schema = @Schema(implementation = UserDTO.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO obj) {
-		var entity = mapper.map(obj, PersonDTO.class);
-		var vo = mapper.map(service.create(entity), PersonDTO.class);
-		vo.add(linkTo(methodOn(PersonResource.class).findById(vo.getId())).withSelfRel());
+	public ResponseEntity<UserDTO> create(@RequestBody UserDTO obj) {
+		var entity = mapper.map(obj, UserDTO.class);
+		var vo = mapper.map(service.create(entity), UserDTO.class);
+		vo.add(linkTo(methodOn(UserResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}
@@ -127,7 +126,7 @@ public class PersonResource {
 	tags = {"Usuario"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = PersonDTO.class))			
+			@Content(schema = @Schema(implementation = UserDTO.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -135,10 +134,10 @@ public class PersonResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<PersonDTO> update(@PathVariable Long id, @RequestBody PersonDTO obj) {
-		var entity = mapper.map(obj, PersonDTO.class);
-		var vo = mapper.map(service.update(entity), PersonDTO.class);
-		vo.add(linkTo(methodOn(PersonResource.class).findById(vo.getId())).withSelfRel());
+	public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO obj) {
+		var entity = mapper.map(obj, UserDTO.class);
+		var vo = mapper.map(service.update(entity), UserDTO.class);
+		vo.add(linkTo(methodOn(UserResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}
@@ -155,7 +154,7 @@ public class PersonResource {
 	}
 )
 	@DeleteMapping(value = ID)
-	public ResponseEntity<PersonDTO> delete(@PathVariable Long id) {
+	public ResponseEntity<UserDTO> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}

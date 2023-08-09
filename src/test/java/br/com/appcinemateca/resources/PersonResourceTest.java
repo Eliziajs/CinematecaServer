@@ -1,10 +1,10 @@
 package br.com.appcinemateca.resources;
 
 import br.com.appcinemateca.api.domain.Person;
-import br.com.appcinemateca.api.dto.PersonDTO;
+import br.com.appcinemateca.api.dto.UserDTO;
 import br.com.appcinemateca.api.repositories.PersonRepository;
-import br.com.appcinemateca.api.resources.PersonResource;
-import br.com.appcinemateca.api.services.implementation.PersonServiceImpl;
+import br.com.appcinemateca.api.resources.UserResource;
+import br.com.appcinemateca.api.services.implementation.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -36,14 +36,14 @@ class PersonResourceTest {
     private static final String PASSWORD = "123";
 
     private Person person = new Person();
-    private PersonDTO personDTO = new PersonDTO();
+    private UserDTO personDTO = new UserDTO();
 
 
     @InjectMocks
-    private PersonResource resource;
+    private UserResource resource;
 
     @Mock
-    private PersonServiceImpl service;
+    private UserServiceImpl service;
 
     @Mock
     private ModelMapper mapper;
@@ -59,12 +59,12 @@ class PersonResourceTest {
         when(service.findById(anyLong())).thenReturn(person);
         when(mapper.map(any(), any())).thenReturn(personDTO);
 
-        ResponseEntity<PersonDTO> response = resource.findById(ID);
+        ResponseEntity<UserDTO> response = resource.findById(ID);
 
         assertNotNull(response);
         assertNotNull(response.getBody());
         assertEquals(ResponseEntity.class, response.getClass());
-        assertEquals(PersonDTO.class, response.getBody().getClass());
+        assertEquals(UserDTO.class, response.getBody().getClass());
 
         assertEquals(ID, response.getBody().getId());
         assertEquals(NAME, response.getBody().getName());
@@ -77,14 +77,14 @@ class PersonResourceTest {
         when(service.findAll()).thenReturn(List.of(person));
         when(mapper.map(any(), any())).thenReturn(personDTO);
 
-        ResponseEntity<CollectionModel<PersonDTO>> response = resource.findAll();
+        ResponseEntity<CollectionModel<UserDTO>> response = resource.findAll();
 
         assertNotNull(response);
         assertNotNull(response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(ResponseEntity.class, response.getClass());
         assertEquals(ArrayList.class, response.getBody().getClass());
-        assertEquals(PersonDTO.class, ((List<?>) response.getBody()).get(INDEX).getClass());
+        assertEquals(UserDTO.class, ((List<?>) response.getBody()).get(INDEX).getClass());
 
         assertEquals(ID, ((Person) ((List<?>) response.getBody()).get(INDEX)).getId());
         assertEquals(NAME, ((Person) ((List<?>) response.getBody()).get(INDEX)).getName());
@@ -96,7 +96,7 @@ class PersonResourceTest {
     void whenCreateThenReturnCreated() {
         when(service.create(any())).thenReturn(person);
 
-        ResponseEntity<PersonDTO> response = resource.create(personDTO);
+        ResponseEntity<UserDTO> response = resource.create(personDTO);
 
         assertEquals(ResponseEntity.class, response.getClass());
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
@@ -108,13 +108,13 @@ class PersonResourceTest {
         when(service.update(personDTO)).thenReturn(person);
         when(mapper.map(any(), any())).thenReturn(personDTO);
 
-        ResponseEntity<PersonDTO> response = resource.update(ID, personDTO);
+        ResponseEntity<UserDTO> response = resource.update(ID, personDTO);
 
         assertNotNull(response);
         assertNotNull(response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(ResponseEntity.class, response.getClass());
-        assertEquals(PersonDTO.class, response.getBody().getClass());
+        assertEquals(UserDTO.class, response.getBody().getClass());
 
         assertEquals(ID, response.getBody().getId());
         assertEquals(NAME, response.getBody().getName());
@@ -125,7 +125,7 @@ class PersonResourceTest {
     void whenDeleteThenReturnSuccess() {
         doNothing().when(service).delete(anyLong());
 
-        ResponseEntity<PersonDTO> response = resource.delete(ID);
+        ResponseEntity<UserDTO> response = resource.delete(ID);
 
         assertNotNull(response);
         assertEquals(ResponseEntity.class, response.getClass());
@@ -135,6 +135,6 @@ class PersonResourceTest {
 
     private void startUser() {
         person = new Person(ID, NAME, EMAIL,  PASSWORD);
-        personDTO = new PersonDTO(ID, NAME, EMAIL, PASSWORD);
+        personDTO = new UserDTO(ID, NAME, EMAIL, PASSWORD);
     }
 }

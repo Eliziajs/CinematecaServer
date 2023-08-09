@@ -68,6 +68,13 @@ public class User implements UserDetails, Serializable {
 	public String getUsername() {
 		return this.userName;
 	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	@Override
 	public boolean isAccountNonExpired() {
