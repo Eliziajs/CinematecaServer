@@ -27,8 +27,6 @@ public class Filme implements Serializable {
 	@Column(name = "dataCadastro")
 	private Date dataCadastro = new Date();
 
-
-
 	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "genero_id")
@@ -43,7 +41,7 @@ public class Filme implements Serializable {
 	@OneToMany(mappedBy = "id.filme") // id.ator estudar o caso
 	private Set<Personagem> personagem = new HashSet<>();
 
-	List<Person> pessoas = new ArrayList<>();
+	//List<Person> pessoas = new ArrayList<>();
 	@JsonBackReference
 	@OneToMany(mappedBy = "filme")
 	List<Curtida> curtidas = new ArrayList<>();
@@ -77,6 +75,14 @@ public class Filme implements Serializable {
 	/*public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
 	}*/
+
+	public Diretor getDiretor() {
+		return diretor;
+	}
+
+	public void setDiretor(Diretor diretor) {
+		this.diretor = diretor;
+	}
 
 	public Long getId() {
 		return id;

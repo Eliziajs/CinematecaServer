@@ -9,13 +9,24 @@ public class GeneroDTO implements Serializable {
 
 
 	private Long id;
+
+	private String nome;
 	private String descricao;
 
 	public GeneroDTO() { }
-	public GeneroDTO(Long id, String descricao) {
-		super();
+
+	public GeneroDTO(Long id, String nome, String descricao) {
 		this.id = id;
+		this.nome = nome;
 		this.descricao = descricao;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Long getId() {

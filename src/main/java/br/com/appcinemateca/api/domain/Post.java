@@ -18,7 +18,7 @@ public class Post implements Serializable {
 	@Column(name = "mensagens")
 	private String mensagem;
 	@Column(name = "Data")
-	private Date data;
+	private Date data = new Date();
 	//@Column(name = "tipoMsg")
 	//private int tipoMsg;
 	

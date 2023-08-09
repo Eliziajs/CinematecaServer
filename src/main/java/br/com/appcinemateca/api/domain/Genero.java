@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "generos")
+@Table(name = "genero")
 public class Genero implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -17,22 +17,31 @@ public class Genero implements Serializable {
 	@Id
 	@Column(name = "id")
 	private Long id;
-
+	@Column(name = "nome")
+	private String nome;
 	@Column(name = "descricao")
 	private String descricao;
-
-	public Genero() {
-
-	}
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "generos")
 	List<Filme> filmes = new ArrayList<>();
 
-	public Genero(Long id, String descricao) {
+	public Genero() {
+
+	}
+	public Genero(Long id, String nome, String descricao) {
 		super();
 		this.id = id;
+		this.nome = nome;
 		this.descricao = descricao;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Long getId() {
@@ -60,20 +69,25 @@ public class Genero implements Serializable {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Genero genero = (Genero) o;
+		return Objects.equals(id, genero.id) && Objects.equals(nome, genero.nome) && Objects.equals(descricao, genero.descricao) && Objects.equals(filmes, genero.filmes);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Genero other = (Genero) obj;
-		return Objects.equals(id, other.id);
+	public int hashCode() {
+		return Objects.hash(id, nome, descricao, filmes);
 	}
 
+	@Override
+	public String toString() {
+		return "Genero{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", descricao='" + descricao + '\'' +
+				", filmes=" + filmes +
+				'}';
+	}
 }

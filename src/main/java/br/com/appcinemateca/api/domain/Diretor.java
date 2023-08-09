@@ -1,6 +1,7 @@
 package br.com.appcinemateca.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -25,23 +26,18 @@ public class Diretor implements Serializable {
 	List<Filme> filmes = new ArrayList<>();
 
 	public Diretor() {
-
 	}
-
 	public Diretor(Long id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
 	}
-
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -49,7 +45,6 @@ public class Diretor implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	public List<Filme> getFilmes() {
 		return filmes;
 	}
@@ -75,4 +70,12 @@ public class Diretor implements Serializable {
 		return Objects.equals(id, other.id);
 	}
 
+	@Override
+	public String toString() {
+		return "Diretor{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", filmes=" + filmes +
+				'}';
+	}
 }
