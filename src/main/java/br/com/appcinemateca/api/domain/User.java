@@ -21,7 +21,9 @@ public class User implements UserDetails, Serializable {
 	
 	@Column(name = "user_name", unique = true)
 	private String userName;
-	
+
+	@Column(unique = true)
+	private String email;
 	@Column(name = "password")
 	private String password;
 	
@@ -67,6 +69,13 @@ public class User implements UserDetails, Serializable {
 	@Override
 	public String getUsername() {
 		return this.userName;
+	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
