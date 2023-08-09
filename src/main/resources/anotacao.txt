@@ -1,3 +1,5 @@
+Banco de dados preenche as tabelas filme e curtida , mas o postmal não reconhece ela toda.
+
 domain
 domain dto
 repository

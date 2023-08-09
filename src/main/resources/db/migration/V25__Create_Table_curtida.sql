@@ -1,4 +1,4 @@
-CREATE TABLE `curtida` (
+CREATE TABLE IF NOT EXISTS `curtida` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `quantidade` bigint DEFAULT NULL,
   `data` date DEFAULT NULL,

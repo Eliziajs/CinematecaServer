@@ -1,4 +1,4 @@
-CREATE TABLE `personagens` (
+CREATE TABLE IF NOT EXISTS `personagens` (
   `nome` varchar(255) DEFAULT NULL,
   `filme_id` bigint NOT NULL,
   `ator_id` bigint NOT NULL,

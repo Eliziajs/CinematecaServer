@@ -24,8 +24,8 @@ public class Filme implements Serializable {
 	private Integer ano;
 	@Column(name = "sinopse")
 	private String sinopse;
-	@Column(name = "dataCadastro")
-	private Date dataCadastro = new Date();
+	@Column(name = "data")
+	private Date data = new Date();
 
 	@JsonManagedReference
 	@ManyToOne
@@ -52,7 +52,7 @@ public class Filme implements Serializable {
 	public Filme() {
 	}
 
-	public Filme(Long id, String titulo, Integer ano, String sinopse, Genero generos, Diretor diretor, Date dataCadastro) {
+	public Filme(Long id, String titulo, Integer ano, String sinopse, Genero generos, Diretor diretor, Date data) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -60,7 +60,7 @@ public class Filme implements Serializable {
 		this.sinopse = sinopse;
 		this.generos = generos;
 		this.diretor = diretor;
-		this.dataCadastro = dataCadastro;
+		this.data = data;
 
 	}
 
@@ -118,11 +118,11 @@ public class Filme implements Serializable {
 	
 
 	public Date getDataCadastro() {
-		return dataCadastro;
+		return data;
 	}
 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
+	public void setDataCadastro(Date data) {
+		this.data = data;
 	}
 
 	public Genero getGeneros() {

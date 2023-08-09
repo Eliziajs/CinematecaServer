@@ -1,10 +1,13 @@
 package br.com.appcinemateca.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -24,11 +27,8 @@ public class Curtida implements Serializable {
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
-    public Person getPerson() {
-        return person;
-    }
 
-   @JsonManagedReference
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "filme_id")
     private Filme filme;
@@ -40,6 +40,9 @@ public class Curtida implements Serializable {
         this.id = id;
         this.quantidade = quantidade;
         this.date = date;
+    }
+   public Person getPerson() {
+        return person;
     }
 
     public Long getId() {

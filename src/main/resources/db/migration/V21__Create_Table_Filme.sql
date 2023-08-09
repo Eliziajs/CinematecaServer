@@ -1,10 +1,9 @@
-
 CREATE TABLE IF NOT EXISTS `filme` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `titulo` varchar(255) DEFAULT NULL,
   `ano` int(4) DEFAULT NULL,
   `sinopse` varchar(255) DEFAULT NULL,
-  `dataCadastro` date DEFAULT NULL,
+  `data` date DEFAULT NULL,
   `genero_id` bigint DEFAULT NULL,
   `diretor_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
