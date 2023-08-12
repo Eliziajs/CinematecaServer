@@ -27,8 +27,6 @@ public class User implements UserDetails, Serializable {
 
 	@Column(name = "password")
 	private String password;
-	@Column(unique = true)
-	private String email;
 
 	@Column(name = "account_non_expired")
 	private Boolean accountNonExpired;

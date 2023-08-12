@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import br.com.appcinemateca.api.domain.Person;
-import br.com.appcinemateca.api.repositories.PersonRepository;
 
 import java.util.List;
 
