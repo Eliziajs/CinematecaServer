@@ -4,24 +4,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
-public class PersonDTO  implements Serializable {
+public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1l;
+	private Long id;
 
-    private Long id;
-    private String name;
-    private String email;
+	private String userName;
+	private String email;
+	private String password;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String password;
-    
-	public PersonDTO() {
+	public UserDTO() {
 		super();
 	}
 
-	public PersonDTO(Long id, String name, String email, String password) {
+	public UserDTO(Long id, String userName, String email, String password) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.userName= userName;
 		this.email = email;
 		this.password = password;
 	}
@@ -34,12 +32,12 @@ public class PersonDTO  implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getuserName() {
+		return userName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setuserName(String name) {
+		this.userName = name;
 	}
 
 	public String getEmail() {

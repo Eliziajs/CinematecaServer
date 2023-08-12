@@ -27,7 +27,9 @@ public class User implements UserDetails, Serializable {
 
 	@Column(name = "password")
 	private String password;
-	
+	@Column(unique = true)
+	private String email;
+
 	@Column(name = "account_non_expired")
 	private Boolean accountNonExpired;
 	
@@ -48,6 +50,12 @@ public class User implements UserDetails, Serializable {
 	
 	public User() {}
 
+	public User(Long id, String userName, String password, String email) {
+		this.id = id;
+		this.userName = userName;
+		this.password = password;
+		this.email = email;
+	}
 
 	public List<String> getRoles() {
 		List<String> roles = new ArrayList<>();

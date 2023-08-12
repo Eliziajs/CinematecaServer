@@ -25,8 +25,8 @@ public class Curtida implements Serializable {
 
     @JsonManagedReference
     @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @JsonManagedReference
     @ManyToOne
@@ -41,8 +41,8 @@ public class Curtida implements Serializable {
         this.quantidade = quantidade;
         this.date = date;
     }
-   public Person getPerson() {
-        return person;
+   public User getUser() {
+        return user;
     }
 
     public Long getId() {
@@ -57,7 +57,7 @@ public class Curtida implements Serializable {
         return quantidade;
     }
 
-    public void setQtd(Long qtd) {
+    public void setQuantidade(Long qtd) {
         this.quantidade = quantidade;
     }
 

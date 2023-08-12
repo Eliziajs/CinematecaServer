@@ -15,9 +15,9 @@ public class Post implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "mensagens")
+	@Column(name = "mensagem")
 	private String mensagem;
-	@Column(name = "Data")
+	@Column(name = "data")
 	private Date data = new Date();
 	//@Column(name = "tipoMsg")
 	//private int tipoMsg;

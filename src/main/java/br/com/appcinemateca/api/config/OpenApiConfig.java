@@ -14,7 +14,7 @@ public class OpenApiConfig {
     OpenAPI CustonOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("App Cinemateca with Java 17 and Spring Boot 3")
+                        .title("App Cinemateca with Java 17 and Spring Boot 4")
                         .version("")
                         .description("")
                         .termsOfService("link")

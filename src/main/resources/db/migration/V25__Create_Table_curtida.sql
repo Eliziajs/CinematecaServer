@@ -3,12 +3,12 @@ CREATE TABLE IF NOT EXISTS `curtida` (
   `quantidade` bigint DEFAULT NULL,
   `data` date DEFAULT NULL,
   `filme_id` bigint DEFAULT NULL,
-  `person_id` bigint DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY  (`filme_id`),
-  KEY  (`person_id`),
+  KEY  (`user_id`),
   CONSTRAINT  FOREIGN KEY (`filme_id`) REFERENCES `filme` (`id`),
-  CONSTRAINT  FOREIGN KEY (`person_id`) REFERENCES `pessoa` (`id`)
+  CONSTRAINT  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 )
 
 
