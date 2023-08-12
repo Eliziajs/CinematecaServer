@@ -1,9 +1,9 @@
 package br.com.appcinemateca.personresourcejsontest;
 
 import br.com.appcinemateca.api.ApiApplication;
+import br.com.appcinemateca.api.dto.UserDTO;
 import br.com.appcinemateca.configuration.TestConfigs;
 import br.com.appcinemateca.integrationTest.containers.AbstractIntegrationTest;
-import br.com.appcinemateca.integrationtests.vo.PersonDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -28,16 +28,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ApiApplication.class,webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 //@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestMethodOrder(OrderAnnotation.class)
-public class PersonResourceJsonTest extends AbstractIntegrationTest{
+public class UserResourceJsonTest extends AbstractIntegrationTest{
 
 	private static RequestSpecification specification;
 	private static ObjectMapper objectMapper;
-	private static PersonDTO person;
+	private static UserDTO user;
 
 	
 	@BeforeAll
@@ -45,7 +44,7 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 		objectMapper = new ObjectMapper();
 		objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		
-		person =new PersonDTO();
+		user =new UserDTO();
 	}
 	
 	@Test
@@ -62,7 +61,7 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 		var content =
 			given().spec(specification)
 			.contentType(TestConfigs.CONTENT_TYPE_JSON)
-				.body(person)
+				.body(user)
 				.when()
 				.post()
 			.then()
@@ -71,21 +70,18 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 				.body()
 					.asString();
 		
-		PersonDTO createdPerson = objectMapper.readValue(content, PersonDTO.class);
-		person =createdPerson;
+		UserDTO createdPerson = objectMapper.readValue(content, UserDTO.class);
+		user =createdPerson;
 		
-		assertNotNull(createdPerson.getName());
+		assertNotNull(createdPerson.getUserName());
 		assertNotNull(createdPerson.getEmail());
 		
 		
 		assertTrue(createdPerson.getId()>0);
 		
-		assertNotNull("Ana",createdPerson.getName());
+		assertNotNull("Ana",createdPerson.getUserName());
 		assertNotNull("ana@email.com",createdPerson.getEmail());
-
-			
 	}
-
 	@Test
 	@Order(2)
 	public void testCreateWihtErrorOrigin() throws JsonMappingException, JsonProcessingException {
@@ -100,7 +96,7 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 		var content =
 			given().spec(specification)
 			.contentType(TestConfigs.CONTENT_TYPE_JSON)
-				.body(person)
+				.body(user)
 				.when()
 				.post()
 			.then()
@@ -115,8 +111,6 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 		assertEquals("Invalid CORS request",content);
 		
 	}
-		
-			
 	@Test
 	@Order(3)
 	public void testFindById() throws JsonMappingException, JsonProcessingException {
@@ -131,7 +125,7 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 		var content =
 			given().spec(specification)
 			.contentType(TestConfigs.CONTENT_TYPE_JSON)
-			.pathParam("id", person.getId())
+			.pathParam("id", user.getId())
 			.when()
 			.get("{id}")
 		.then()
@@ -140,19 +134,18 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 				.body()
 					.asString();
 		
-		PersonDTO createdPerson = objectMapper.readValue(content, PersonDTO.class);
-		person =createdPerson;
+		UserDTO createdPerson = objectMapper.readValue(content, UserDTO.class);
+		user =createdPerson;
 		
-		assertNotNull(createdPerson.getName());
+		assertNotNull(createdPerson.getUserName());
 		assertNotNull(createdPerson.getEmail());
 		
 		
 		assertTrue(createdPerson.getId()>0);
 		
-		assertNotNull("Ana",createdPerson.getName());
+		assertNotNull("Ana",createdPerson.getUserName());
 		assertNotNull("ana@email.com",createdPerson.getEmail());
 	}
-
 	@Test
 	@Order(4)
 	public void testFindByIdwhithErrorOrigin() throws JsonMappingException, JsonProcessingException {
@@ -167,7 +160,7 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 		var content =
 			given().spec(specification)
 			.contentType(TestConfigs.CONTENT_TYPE_JSON)
-			.pathParam("id", person.getId())
+			.pathParam("id", user.getId())
 			.when()
 			.get("{id}")
 		.then()
@@ -181,13 +174,7 @@ public class PersonResourceJsonTest extends AbstractIntegrationTest{
 	}
 
 	private void mockPerson() {
-		person.setName("Ana");
-		person.setEmail("ana@email.com");
-		
-		
+		user.setUserName("Ana");
+		user.setEmail("ana@email.com");
 	}
-
-	
-
-
 }

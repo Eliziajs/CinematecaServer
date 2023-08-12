@@ -1,5 +1,5 @@
--Banco de dados preenche as tabelas filme e curtida , mas o postmal não reconhece ela toda.
-- junção das classes person e User ( corrigir)
+Cannot add or update a child row: a foreign key constraint fails (`testbd`.`curtida`,
+ CONSTRAINT `curtida_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))
 domain
 domain dto
 repository

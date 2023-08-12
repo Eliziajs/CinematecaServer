@@ -1,9 +1,10 @@
+
 package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
-import br.com.appcinemateca.api.domain.User;
-import br.com.appcinemateca.api.dto.UserDTO;
-import br.com.appcinemateca.api.services.interfaces.UserServices;
+import br.com.appcinemateca.api.domain.Post;
+import br.com.appcinemateca.api.dto.PostDTO;
+import br.com.appcinemateca.api.services.interfaces.PostServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -24,28 +25,29 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 //@CrossOrigin
 @RestController
-@RequestMapping(value = "/user")
-@Tag(name = "usuarios", description= "Endpoints for Managing Usuarios")
-public class UserResource {
+@RequestMapping(value = "/post")
+@Tag(name = "post", description= "Endpoints for Managing post")
+public class PostResource {
 
 	private static final String ID = "/{id}";
+	private final String Post = "post";
 
 	@Autowired
 	private ModelMapper mapper;
 
 	@Autowired
-	private UserServices service;
+	private PostServices service;
 
-	// como iterar uma coleção para cada objeto?
-	@GetMapping(produces = {MediaType.APPLICATION_JSON, 
+
+	@GetMapping(produces = {MediaType.APPLICATION_JSON,
 			MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
-	@Operation(summary = "Finds all user", description = "Finds all Users",
-		tags = {"Usuarios"},
+	@Operation(summary = "Finds all post", description = "Finds all post",
+		tags = {"post"},
 		responses = {@ApiResponse(description = "Success", responseCode = "200", 
 		content = {
 				@Content(
 						mediaType = "application/json",
-						array = @ArraySchema(schema = @Schema(implementation = UserDTO.class))
+						array = @ArraySchema(schema = @Schema(implementation = PostDTO.class))
 						)
 						}),
 			@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -54,24 +56,25 @@ public class UserResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<UserDTO>> findAll() {
+	public ResponseEntity<CollectionModel<PostDTO>> findAll() {
 
-		List<User> list = service.findAll();
-		List<UserDTO> listDTO = list.stream().map(x -> mapper.map(x, UserDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(UserResource.class).findAll()).withSelfRel();
-		CollectionModel<UserDTO> result = CollectionModel.of(listDTO, link);
+		List<Post> list = service.findAll();
+		List<PostDTO> listDTO = list.stream().map(x -> mapper.map(x, PostDTO.class)).collect(Collectors.toList());
+		var link = linkTo(methodOn(PostResource.class).findAll()).withSelfRel();
+		CollectionModel<PostDTO> result = CollectionModel.of(listDTO, link);
 		// return result;
 		return ResponseEntity.ok().body(result);
+
 
 	}
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 
 			MediaType.APPLICATION_XML,MediaType.APPLICATION_YML})
-	@Operation(summary = "Finds a User", description = "Finds a User",
-	tags = {"Usuario"},
+	@Operation(summary = "Finds a register", description = "Finds a Register",
+	tags = {"Post"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = UserDTO.class))
+			@Content(schema = @Schema(implementation = PostDTO.class))
 		),
 		@ApiResponse(description = "No Content", responseCode = "204", content = @Content),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -80,10 +83,11 @@ public class UserResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
-		User e = service.findById(id);
-		var v = mapper.map(e, UserDTO.class);
-		v.add(linkTo(methodOn(UserResource.class).findById(id)).withSelfRel());
+	public ResponseEntity<PostDTO> findById(@PathVariable Long id) {
+		Post e = service.findById(id);
+		var v = mapper.map(e, PostDTO.class);
+		//v.add(linkTo(methodOn(AtorResource.class).findById(id)).withSelfRel());
+
 		return ResponseEntity.ok().body(v);
 	}
 
@@ -98,21 +102,21 @@ public class UserResource {
 			MediaType.APPLICATION_YML}, 
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 					MediaType.APPLICATION_YML})
-	@Operation(summary = "Add a User", description = "Add a User",
-	tags = {"Usuario"},
+	@Operation(summary = "Add a Register", description = "Add a Register",
+	tags = {"post"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = UserDTO.class))
+			@Content(schema = @Schema(implementation = PostDTO.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<UserDTO> create(@RequestBody UserDTO obj) {
-		var entity = mapper.map(obj, UserDTO.class);
-		var vo = mapper.map(service.create(entity), UserDTO.class);
-		vo.add(linkTo(methodOn(UserResource.class).findById(vo.getId())).withSelfRel());
+	public ResponseEntity<PostDTO> create(@RequestBody PostDTO obj) {
+		var entity = mapper.map(obj, PostDTO.class);
+		var vo = mapper.map(service.create(entity), PostDTO.class);
+		//vo.add(linkTo(methodOn(PostResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}
@@ -122,11 +126,11 @@ public class UserResource {
 			MediaType.APPLICATION_YML}, 
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 					MediaType.APPLICATION_YML})
-	@Operation(summary = "Updates a User", description = "Updates a User",
-	tags = {"Usuario"},
+	@Operation(summary = "Updates a Register", description = "Updates a register",
+	tags = {"post"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
 	content = 
-			@Content(schema = @Schema(implementation = UserDTO.class))
+			@Content(schema = @Schema(implementation = Post.class))
 		),
 		@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 		@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -134,16 +138,16 @@ public class UserResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO obj) {
-		var entity = mapper.map(obj, UserDTO.class);
-		var vo = mapper.map(service.update(entity), UserDTO.class);
-		vo.add(linkTo(methodOn(UserResource.class).findById(vo.getId())).withSelfRel());
+	public ResponseEntity<PostDTO> update(@PathVariable Long id, @RequestBody PostDTO obj) {
+		var entity = mapper.map(obj, PostDTO.class);
+		var vo = mapper.map(service.update(entity), PostDTO.class);
+		//vo.add(linkTo(methodOn(PostResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}
 	
-	@Operation(summary = "Deletes a User", description = "Deletes a User",
-	tags = {"Usuario"},
+	@Operation(summary = "Deletes a Register", description = "Deletes a Register",
+	tags = {"Ator"},
 	responses = {@ApiResponse(description = "No Content", responseCode = "204", 
 	content = @Content		
 		),
@@ -154,7 +158,7 @@ public class UserResource {
 	}
 )
 	@DeleteMapping(value = ID)
-	public ResponseEntity<UserDTO> delete(@PathVariable Long id) {
+	public ResponseEntity<PostDTO> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}

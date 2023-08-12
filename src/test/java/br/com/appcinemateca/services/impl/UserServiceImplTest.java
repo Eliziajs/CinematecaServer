@@ -1,9 +1,7 @@
 package br.com.appcinemateca.services.impl;
 
-import br.com.appcinemateca.api.domain.Person;
 import br.com.appcinemateca.api.domain.User;
 import br.com.appcinemateca.api.dto.UserDTO;
-import br.com.appcinemateca.api.repositories.PersonRepository;
 import br.com.appcinemateca.api.repositories.UserRepository;
 import br.com.appcinemateca.api.services.exceptions.DataIntegratyViolationException;
 import br.com.appcinemateca.api.services.exceptions.ObjectNotFoundException;
@@ -25,7 +23,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest(classes = UserRepository.class)
-class PersonServiceImplTest {
+class UserServiceImplTest {
 
     private static final Long ID      = (long) 1;
     private static final Integer INDEX   = 0;
@@ -46,7 +44,7 @@ class PersonServiceImplTest {
     private ModelMapper mapper;
     
     private User user;
-    private UserDTO personDTO;
+    private UserDTO userDTO;
     private Optional<User> optionalUser;
 
 
@@ -66,7 +64,7 @@ class PersonServiceImplTest {
 
         assertEquals(User.class, response.getClass());
         assertEquals(ID, response.getId());
-        assertEquals(NAME, response.getName());
+        assertEquals(NAME, response.getUserName());
         assertEquals(EMAIL, response.getEmail());
     }
 
@@ -104,12 +102,13 @@ class PersonServiceImplTest {
     void whenCreateThenReturnSuccess() {
         when(repository.save(any())).thenReturn(user);
 
-        Person response = service.create(UserDTO);
+
+        User response = service.create(userDTO);
 
         assertNotNull(response);
-        assertEquals(Person.class, response.getClass());
+        assertEquals(User.class, response.getClass());
         assertEquals(ID, response.getId());
-        assertEquals(NAME, response.getName());
+        assertEquals(NAME, response.getUserName());
         assertEquals(EMAIL, response.getEmail());
         assertEquals(PASSWORD, response.getPassword());
     }
@@ -120,7 +119,7 @@ class PersonServiceImplTest {
 
         try{
             optionalUser.get().setId((long) 2);
-            service.create(UserDTO);
+            service.create(userDTO);
         } catch (Exception ex) {
             assertEquals(DataIntegratyViolationException.class, ex.getClass());
             assertEquals(E_MAIL_JA_CADASTRADO_NO_SISTEMA, ex.getMessage());
@@ -131,7 +130,7 @@ class PersonServiceImplTest {
     void whenUpdateThenReturnSuccess() {
         when(repository.save(any())).thenReturn(user);
 
-        User response = service.update(UserDTO);
+        User response = service.update(userDTO);
 
         assertNotNull(response);
         assertEquals(User.class, response.getClass());
@@ -147,7 +146,7 @@ class PersonServiceImplTest {
 
         try{
             optionalUser.get().setId((long) 2);
-            service.create(UserDTO);
+            service.create(userDTO);
         } catch (Exception ex) {
             assertEquals(DataIntegratyViolationException.class, ex.getClass());
             assertEquals(E_MAIL_JA_CADASTRADO_NO_SISTEMA, ex.getMessage());
