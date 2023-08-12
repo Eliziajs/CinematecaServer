@@ -1,6 +1,8 @@
 package br.com.appcinemateca.api.config;
 
 
+import br.com.appcinemateca.api.domain.User;
+import br.com.appcinemateca.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +22,7 @@ public class LocalConfig {
 
     @Bean
     void startDB() {
-       // User u1 = new User(null, "Valdir", "valdir@mail.com", "123");
+       //User u1 = new User(null, "Valdir", "valdir@mail.com", "123");
         //User u2 = new User(null, "Luiz", "luiz@mail.com", "123");
 
         //repository.saveAll(List.of(u1, u2));
