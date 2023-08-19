@@ -10,3 +10,4 @@
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_user_name` (`user_name`)
 ) ENGINE=InnoDB;
+
