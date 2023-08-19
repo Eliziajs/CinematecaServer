@@ -83,7 +83,7 @@ class UserResourceTest {
         assertNotNull(response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(ResponseEntity.class, response.getClass());
-        assertEquals(ArrayList.class, response.getBody().getClass());
+        assertEquals(CollectionModel.class, response.getBody().getClass());
         assertEquals(UserDTO.class, ((List<?>) response.getBody()).get(INDEX).getClass());
 
         assertEquals(ID, ((User) ((List<?>) response.getBody()).get(INDEX)).getId());

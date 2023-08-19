@@ -15,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -110,11 +112,14 @@ public class UserResource {
 	}
 )
 	public ResponseEntity<UserDTO> create(@RequestBody UserDTO obj) {
-		var entity = mapper.map(obj, UserDTO.class);
-		var vo = mapper.map(service.create(entity), UserDTO.class);
-		vo.add(linkTo(methodOn(UserResource.class).findById(vo.getId())).withSelfRel());
 
-		return ResponseEntity.ok().body(vo);
+		//var entity = mapper.map(obj, UserDTO.class);
+		//var vo = mapper.map(service.create(entity), UserDTO.class);
+		URI uri = ServletUriComponentsBuilder
+				.fromCurrentRequest().path(ID).buildAndExpand(service.create(obj).getId()).toUri();
+		//vo.add(linkTo(methodOn(UserResource.class).findById(vo.getId())).withSelfRel());
+
+		return ResponseEntity.created(uri).build();// metodo atualizado ver hetoas
 	}
 
 
