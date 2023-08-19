@@ -20,6 +20,7 @@ public class UserDTO extends RepresentationModel<UserDTO> implements Serializabl
 	private String userName;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
+	@Column(unique = true)
 	private String email;
 
 	public UserDTO() {
