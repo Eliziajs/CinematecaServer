@@ -1,6 +1,6 @@
 package br.com.appcinemateca.integrationtests.swagger;
 
-import br.com.appcinemateca.api.ApiApplication;
+import br.com.appcinemateca.ApiApplication;
 import br.com.appcinemateca.configuration.TestConfigs;
 import br.com.appcinemateca.integrationTest.containers.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package br.com.appcinemateca.personresourcejsontest;
 
-import br.com.appcinemateca.api.ApiApplication;
+import br.com.appcinemateca.ApiApplication;
 import br.com.appcinemateca.api.dto.UserDTO;
 import br.com.appcinemateca.configuration.TestConfigs;
 import br.com.appcinemateca.integrationTest.containers.AbstractIntegrationTest;

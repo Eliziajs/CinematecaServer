@@ -174,8 +174,8 @@ class UserServiceImplTest {
     }
 
     private void startUser() {
-        user = new User(ID, NAME, EMAIL,  PASSWORD);
-        userDTO = new UserDTO(ID, NAME, EMAIL, PASSWORD);
-        optionalUser = Optional.of(new User(ID, NAME, EMAIL, PASSWORD));
+        user = new User(ID, NAME, PASSWORD,EMAIL);
+        userDTO = new UserDTO(ID, NAME, PASSWORD,EMAIL);
+        optionalUser = Optional.of(new User(ID, NAME, PASSWORD,EMAIL));
     }
 }
