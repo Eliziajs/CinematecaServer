@@ -1,4 +1,4 @@
-package br.com.appcinemateca.api;
+package br.com.appcinemateca;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

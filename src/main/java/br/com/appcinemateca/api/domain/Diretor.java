@@ -65,8 +65,8 @@ public class Diretor implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Diretor other = (Diretor) obj;
-		return Objects.equals(id, other.id);
+		Diretor diretor = (Diretor) obj;
+		return Objects.equals(id, diretor.id);
 	}
 
 	@Override

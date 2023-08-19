@@ -21,7 +21,7 @@ public class Curtida implements Serializable {
     @Column(name = "quantidade")
     public Long quantidade;
     @Column(name = "data")
-    private Date date = new Date();
+    private Date data = new Date();
 
     @JsonManagedReference
     @ManyToOne
@@ -36,10 +36,10 @@ public class Curtida implements Serializable {
     public Curtida() {
     }
 
-    public Curtida(Long id, Long quantidade, Date date) {
+    public Curtida(Long id, Long quantidade, Date data) {
         this.id = id;
         this.quantidade = quantidade;
-        this.date = date;
+        this.data = data;
     }
    public User getUser() {
         return user;
@@ -53,32 +53,32 @@ public class Curtida implements Serializable {
         this.id = id;
     }
 
-    public Long getQtd() {
+    public Long getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Long qtd) {
+    public void setQuantidade(Long quantidade) {
         this.quantidade = quantidade;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getData() {
+        return data;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Date data) {
+        this.data = data;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Curtida curtida)) return false;
-        return Objects.equals(id, curtida.id) && Objects.equals(quantidade, curtida.quantidade) && Objects.equals(date, curtida.date);
+        return Objects.equals(id, curtida.id) && Objects.equals(quantidade, curtida.quantidade) && Objects.equals(data, curtida.data);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, quantidade, date);
+        return Objects.hash(id, quantidade, data);
     }
 }
 

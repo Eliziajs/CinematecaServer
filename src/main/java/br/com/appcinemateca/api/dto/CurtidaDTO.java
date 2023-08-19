@@ -2,6 +2,8 @@ package br.com.appcinemateca.api.dto;
 
 //Avaliar o tipo de dado long para o atributo qtd
 
+import br.com.appcinemateca.api.domain.Curtida;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -12,17 +14,17 @@ public class CurtidaDTO implements Serializable {
 
     private Long id;
 
-    public Long qtd;
+    public Long quantidade;
 
-    private Date date;
+    private Date data;
 
     public CurtidaDTO() {
     }
 
-    public CurtidaDTO(Long id, Long qtd, Date date) {
+    public CurtidaDTO(Long id, Long quantidade, Date data) {
         this.id = id;
-        this.qtd = qtd;
-        this.date = date;
+        this.quantidade = quantidade;
+        this.data = data;
     }
 
     public Long getId() {
@@ -33,20 +35,20 @@ public class CurtidaDTO implements Serializable {
         this.id = id;
     }
 
-    public Long getQtd() {
-        return qtd;
+    public Long getQuantidade() {
+        return quantidade;
     }
 
-    public void setQtd(Long qtd) {
-        this.qtd = qtd;
+    public void setQuantidade(Long quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getData() {
+        return data;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setData(Date data) {
+        this.data = data;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class CurtidaDTO implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        CadastroDTO other = (CadastroDTO) obj;
+        CurtidaDTO other = (CurtidaDTO) obj;
         return Objects.equals(id, other.id);
     }
 }

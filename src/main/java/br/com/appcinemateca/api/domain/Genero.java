@@ -78,6 +78,7 @@ public class Genero implements Serializable {
 
 	@Override
 	public int hashCode() {
+
 		return Objects.hash(id, nome, descricao, filmes);
 	}
 

@@ -9,8 +9,15 @@ import java.util.List;
 public interface CurtidaServices {
 
     Curtida findById(Long id);
+
     List<Curtida> findAll();
+
     Curtida create(CurtidaDTO obj);
+
     Curtida update(CurtidaDTO obj);
+
     void delete(Long id);
+    List<Curtida> findByQuantidadeAndFilme_id(Long quantidade, Long filme_id);
+    List<Curtida>buscarPorQuantidade(Long quantidade);
+
 }

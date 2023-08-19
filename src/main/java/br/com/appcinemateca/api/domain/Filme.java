@@ -71,18 +71,9 @@ public class Filme implements Serializable {
 		}
 		return lista;
 	}
-
 	/*public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
 	}*/
-
-	public Diretor getDiretor() {
-		return diretor;
-	}
-
-	public void setDiretor(Diretor diretor) {
-		this.diretor = diretor;
-	}
 
 	public Long getId() {
 		return id;
@@ -131,6 +122,13 @@ public class Filme implements Serializable {
 
 	public void setGeneros(Genero generos) {
 		this.generos = generos;
+	}
+	public Diretor getDiretor() {
+		return diretor;
+	}
+
+	public void setDiretor(Diretor diretor) {
+		this.diretor = diretor;
 	}
 
 	@JsonIgnore
