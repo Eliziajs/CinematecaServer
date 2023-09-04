@@ -4,7 +4,6 @@ package br.com.appcinemateca.api.resources;
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
 import br.com.appcinemateca.api.domain.Genero;
 import br.com.appcinemateca.api.dto.GeneroDTO;
-import br.com.appcinemateca.api.services.interfaces.DiretorServices;
 import br.com.appcinemateca.api.services.interfaces.GeneroServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -41,7 +40,7 @@ public class GeneroResource {
 
 	@GetMapping(produces = {MediaType.APPLICATION_JSON,
 			MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
-	@Operation(summary = "Finds all acts", description = "Finds all acts",
+	@Operation(summary = "Finds all generos", description = "Finds all generos",
 		tags = {"generos"},
 		responses = {@ApiResponse(description = "Success", responseCode = "200", 
 		content = {
