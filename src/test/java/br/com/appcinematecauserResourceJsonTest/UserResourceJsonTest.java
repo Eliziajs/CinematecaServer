@@ -1,4 +1,4 @@
-package br.com.appcinemateca.personresourcejsontest;
+package br.com.appcinematecauserResourceJsonTest;
 
 import br.com.appcinemateca.ApiApplication;
 import br.com.appcinemateca.api.dto.UserDTO;
@@ -70,17 +70,17 @@ public class UserResourceJsonTest extends AbstractIntegrationTest{
 				.body()
 					.asString();
 		
-		UserDTO createdPerson = objectMapper.readValue(content, UserDTO.class);
-		user =createdPerson;
+		UserDTO createdUser = objectMapper.readValue(content, UserDTO.class);
+		user =createdUser;
 		
-		assertNotNull(createdPerson.getUserName());
-		assertNotNull(createdPerson.getEmail());
+		assertNotNull(createdUser.getUserName());
+		assertNotNull(createdUser.getEmail());
 		
 		
-		assertTrue(createdPerson.getId()>0);
+		assertTrue(createdUser.getId()>0);
 		
-		assertNotNull("Ana",createdPerson.getUserName());
-		assertNotNull("ana@email.com",createdPerson.getEmail());
+		assertNotNull("Ana",createdUser.getUserName());
+		assertNotNull("ana@email.com",createdUser.getEmail());
 	}
 	@Test
 	@Order(2)

@@ -3,9 +3,12 @@
 package br.com.appcinemateca.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.*;
@@ -18,13 +21,16 @@ public class Filme implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "titulo")
+
+	@Column(name = "titulo", nullable = false, length = 250)
 	private String titulo;
 	@Column(name = "ano")
 	private Integer ano;
-	@Column(name = "sinopse")
+
+	@Column(name = "sinopse",nullable = false)
 	private String sinopse;
-	@Column(name = "data")
+	@Column(name = "data", updatable = false)
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private Date data = new Date();
 
 	@JsonManagedReference

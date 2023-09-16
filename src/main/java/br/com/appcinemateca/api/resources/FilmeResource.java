@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -23,10 +24,11 @@ import java.util.stream.Collectors;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-//@CrossOrigin
+
 @RestController
 @RequestMapping(value = "/filmes")
 @Tag(name = "filme", description= "Endpoints for Managing filme")
+@CrossOrigin(origins = "http://localhost:4200")
 public class FilmeResource {
 
 	private static final String ID = "/{id}";
@@ -37,6 +39,7 @@ public class FilmeResource {
 
 	@Autowired
 	private FilmeServices service;
+
 
 
 	@GetMapping(produces = {MediaType.APPLICATION_JSON,
@@ -96,8 +99,8 @@ public class FilmeResource {
 	 *             ResponseEntity.ok() .body(service.findAll().stream().map(x ->
 	 *             mapper.map(x, UserDTO.class)).collect(Collectors.toList())); }
 	 **/
-	
-	//@CrossOrigin(origins = "http://localhost:8080")
+
+
 	@PostMapping (consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 			MediaType.APPLICATION_YML}, 
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
@@ -113,7 +116,7 @@ public class FilmeResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<FilmeDTO> create(@RequestBody FilmeDTO obj) {
+	public ResponseEntity<FilmeDTO> create(@RequestBody @Valid FilmeDTO obj) {
 		var entity = mapper.map(obj,FilmeDTO.class);
 		var vo = mapper.map(service.create(entity), FilmeDTO.class);
 		//vo.add(linkTo(methodOn(AtorResource.class).findById(vo.getId())).withSelfRel());

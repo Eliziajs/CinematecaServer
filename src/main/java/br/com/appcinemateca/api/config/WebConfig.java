@@ -14,13 +14,10 @@ import br.com.appcinemateca.api.config.serialization.converter.YamlJackson2HttpM
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-	
-	
-
 	private static final MediaType MEDIA_TYPE_APPLICATION_YML =
 			MediaType.valueOf("application/x-yaml");
 	
-	@Value("cors.origin-patterns:default")
+	@Value("${cors.origin-patterns:default}")
 	private String corsOriginPatterns="";
 
 	
@@ -41,7 +38,7 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 		configurer.favorParameter(false)
-		.parameterName("mediaType").ignoreAcceptHeader(false)
+		.ignoreAcceptHeader(false)
 		.useRegisteredExtensionsOnly(false)
 		.defaultContentType( MediaType.APPLICATION_JSON)
 			.mediaType("json", MediaType.APPLICATION_JSON)
