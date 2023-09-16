@@ -11,7 +11,7 @@ test de classes
 http://localhost:8080/swagger-ui/index.html
 mudar para person as configuraões do swagger
 teste
-
+faze teste de integração com obj user
 classe de teste controller front end
 /**@RestController
 public class User1Resources {
