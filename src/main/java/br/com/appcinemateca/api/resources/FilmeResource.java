@@ -2,11 +2,10 @@
 package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
-import br.com.appcinemateca.api.dto.FilmeDTO;
 import br.com.appcinemateca.api.domain.Filme;
+import br.com.appcinemateca.api.dto.FilmeDTO;
 import br.com.appcinemateca.api.services.interfaces.FilmeServices;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -14,15 +13,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 @RestController
@@ -42,7 +37,7 @@ public class FilmeResource {
 
 
 
-	@GetMapping(produces = {MediaType.APPLICATION_JSON,
+	/**@GetMapping(produces = {MediaType.APPLICATION_JSON,
 			MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
 	@Operation(summary = "Finds all acts", description = "Finds all films",
 		tags = {"filmes"},
@@ -67,9 +62,8 @@ public class FilmeResource {
 		CollectionModel<FilmeDTO> result = CollectionModel.of(listDTO, link);
 		// return result;
 		return ResponseEntity.ok().body(result);
-
-
 	}
+	**/
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 
 			MediaType.APPLICATION_XML,MediaType.APPLICATION_YML})
@@ -94,11 +88,14 @@ public class FilmeResource {
 		return ResponseEntity.ok().body(v);
 	}
 
-	/**
-	 * @GetMapping public ResponseEntity<List<UserDTO>> findAll() { return
-	 *             ResponseEntity.ok() .body(service.findAll().stream().map(x ->
-	 *             mapper.map(x, UserDTO.class)).collect(Collectors.toList())); }
-	 **/
+
+	  @GetMapping
+	  public ResponseEntity<List<FilmeDTO>> findAll() {
+		return ResponseEntity.ok() .body(service.findAll()
+				.stream().map(x -> mapper.map(x, FilmeDTO.class))
+				.collect(Collectors.toList()));
+	}
+
 
 
 	@PostMapping (consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
@@ -165,4 +162,5 @@ public class FilmeResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+
 }

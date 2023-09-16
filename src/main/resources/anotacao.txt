@@ -55,7 +55,5 @@ teste de merge token
 
 - verificara a class SecurityConfig Atualização de pacote e metodos depreciados
 
-TESTE DE laptop
-TESTE DE PC 2
-teste de laptop 2
-teste pc 3
+Lembrar: Findall de filme esta com retorno em lista assim pode retornar para a lista do front end
+pesquisar como retornar uma coleção.
