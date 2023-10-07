@@ -16,8 +16,8 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -30,13 +30,18 @@ import static org.mockito.Mockito.*;
 class UserResourceTest {
 
     private static final Long ID      = (long) 1;
-    private static final Integer INDEX   = 0;
-    private static final String NAME     = "Valdir";
-    private static final String EMAIL    = "valdir@mail.com";
-    private static final String PASSWORD = "123";
+    private static final Integer INDEX      = 0;
+    private static final String  SOBRENOME  = "Januario";
+    private static final String DATA        = "20/09/2023";
+    private static final String NASCIMENTO = "20/09/1980";
+    private static final String NAME       = "Elizia";
+    private static final String EMAIL      = "elizia@mail.com";
+    private static final String PASSWORD   = "123";
+    private static final Integer STATUS   = 1;
+    private static final String USERNAME   ="Lindizia";
 
-    private User user = new User();
-    private UserDTO userDTO = new UserDTO();
+    private User user = new User(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
+    private UserDTO userDTO = new UserDTO(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
 
 
     @InjectMocks
@@ -67,9 +72,8 @@ class UserResourceTest {
         assertEquals(UserDTO.class, response.getBody().getClass());
 
         assertEquals(ID, response.getBody().getId());
-        assertEquals(NAME, response.getBody().getUserName());
-        assertEquals(EMAIL, response.getBody().getEmail());
-        assertEquals(PASSWORD, response.getBody().getPassword());
+        assertEquals(NAME, response.getBody().getUsername());
+
     }
 
    @Test
@@ -87,8 +91,7 @@ class UserResourceTest {
         assertEquals(UserDTO.class, ((List<?>) response.getBody()).get(INDEX).getClass());
 
         assertEquals(ID, ((User) ((List<?>) response.getBody()).get(INDEX)).getId());
-        assertEquals(NAME, ((User) ((List<?>) response.getBody()).get(INDEX)).getUserName());
-        assertEquals(EMAIL, ((User) ((List<?>) response.getBody()).get(INDEX)).getEmail());
+        assertEquals(NAME, ((User) ((List<?>) response.getBody()).get(INDEX)).getUsername());
         assertEquals(PASSWORD, ((User) ((List<?>) response.getBody()).get(INDEX)).getPassword());
     }
 
@@ -117,8 +120,8 @@ class UserResourceTest {
         assertEquals(UserDTO.class, response.getBody().getClass());
 
         assertEquals(ID, response.getBody().getId());
-        assertEquals(NAME, response.getBody().getUserName());
-        assertEquals(EMAIL, response.getBody().getEmail());
+        assertEquals(NAME, response.getBody().getUsername());
+
     }
 
     @Test
@@ -134,7 +137,7 @@ class UserResourceTest {
     }
 
     private void startUser() {
-        user = new User(ID, NAME, EMAIL,  PASSWORD);
-        userDTO = new UserDTO(ID, NAME, EMAIL, PASSWORD);
+        user = new User(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
+        userDTO = new UserDTO(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
     }
 }

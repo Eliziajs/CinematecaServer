@@ -9,25 +9,25 @@ public class PersonagemDTO implements Serializable {
 
 
 	private PersonagemPKDTO id = new PersonagemPKDTO();
-	private String nome;
+	private String personagem;
 
 	public PersonagemDTO() {
 
 	}
 
-	public PersonagemDTO(String nome, FilmeDTO filme, AtorDTO ator) {
+	public PersonagemDTO(String personagem, FilmeDTO filme, AtorDTO ator) {
 		super();
-		this.nome = nome;
+		this.personagem = personagem;
 		id.setAtor(ator);
 		id.setFilme(filme);
 	}
 
-	public String getNome() {
-		return nome;
+	public String getPersonagem() {
+		return personagem;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPersonagem(String personagem) {
+		this.personagem = personagem;
 	}
 
 	public PersonagemPKDTO getId() {

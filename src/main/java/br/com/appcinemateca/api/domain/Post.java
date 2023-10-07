@@ -1,9 +1,12 @@
 package br.com.appcinemateca.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,7 +24,8 @@ public class Post implements Serializable {
 	private Date data = new Date();
 	//@Column(name = "tipoMsg")
 	//private int tipoMsg;
-	
+
+
 
 	/*@JsonIgnore
 	@ManyToMany (mappedBy = "mensagens")

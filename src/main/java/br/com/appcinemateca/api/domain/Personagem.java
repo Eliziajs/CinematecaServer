@@ -1,10 +1,7 @@
 package br.com.appcinemateca.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -18,25 +15,25 @@ public class Personagem implements Serializable {
 	@EmbeddedId
 	private PersonagemPK id = new PersonagemPK();
 	@Column(name = "nome")
-	private String nome;
+	private String personagem;
 
 	public Personagem() {
 
 	}
 
-	public Personagem(String nome, Filme filme, Ator ator) {
+	public Personagem(String personagem, Filme filme, Ator ator) {
 		super();
-		this.nome = nome;
+		this.personagem = personagem;
 		id.setAtor(ator);
 		id.setFilme(filme);
 	}
 
-	public String getNome() {
-		return nome;
+	public String getPersonagem() {
+		return personagem;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPersonagem(String personagem) {
+		this.personagem = personagem;
 	}
 
 	public PersonagemPK getId() {

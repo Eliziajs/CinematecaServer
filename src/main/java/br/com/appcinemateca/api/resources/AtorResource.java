@@ -4,7 +4,10 @@ package br.com.appcinemateca.api.resources;
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
 import br.com.appcinemateca.api.domain.Ator;
 import br.com.appcinemateca.api.dto.AtorDTO;
-//import br.com.appcinemateca.api.dto.CadastroDTO;
+//import br.com.appcinemateca.api.dto.UserDTO;
+import br.com.appcinemateca.api.dto.DiretorDTO;
+import br.com.appcinemateca.api.repositories.AtorRepository;
+import br.com.appcinemateca.api.repositories.UserRepository;
 import br.com.appcinemateca.api.services.interfaces.AtorServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -15,6 +18,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -114,6 +118,7 @@ public class AtorResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
+
 	public ResponseEntity<AtorDTO> create(@RequestBody AtorDTO obj) {
 		var entity = mapper.map(obj, AtorDTO.class);
 		var vo = mapper.map(service.create(entity), AtorDTO.class);
@@ -122,7 +127,8 @@ public class AtorResource {
 		return ResponseEntity.ok().body(vo);
 	}
 
-
+	@Autowired
+	AtorRepository repository;
 	@PutMapping(value = ID,consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
 			MediaType.APPLICATION_YML}, 
 			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
@@ -139,10 +145,11 @@ public class AtorResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
+
 	public ResponseEntity<AtorDTO> update(@PathVariable Long id, @RequestBody AtorDTO obj) {
 		var entity = mapper.map(obj, AtorDTO.class);
 		var vo = mapper.map(service.update(entity), AtorDTO.class);
-		//vo.add(linkTo(methodOn(AtorResource.class).findById(vo.getId())).withSelfRel());
+		//vo.add(linkTo(methodOn(DiretorResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}

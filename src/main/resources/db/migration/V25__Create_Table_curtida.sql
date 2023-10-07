@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `curtida` (
   KEY  (`filme_id`),
   KEY  (`user_id`),
   CONSTRAINT  FOREIGN KEY (`filme_id`) REFERENCES `filme` (`id`),
-  CONSTRAINT  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT  FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 )
 
 

@@ -1,5 +1,6 @@
 package br.com.appcinemateca.api.services.interfaces;
 
+
 import br.com.appcinemateca.api.domain.User;
 import br.com.appcinemateca.api.dto.UserDTO;
 

@@ -5,7 +5,7 @@ import java.util.Date;
 import br.com.appcinemateca.api.exceptions.ExceptionResponse;
 import br.com.appcinemateca.api.exceptions.RequiredObjectIsNullException;
 import br.com.appcinemateca.api.exceptions.ResourceNotFoundException;
-import br.com.appcinemateca.api.exceptions.exceptionJwt.InvalidJwtAuthenticationException;
+//import br.com.appcinemateca.api.exceptions.exceptionJwt.InvalidJwtAuthenticationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -56,7 +56,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 	
-	@ExceptionHandler(InvalidJwtAuthenticationException.class)
+	/**@ExceptionHandler(InvalidJwtAuthenticationException.class)
 	public final ResponseEntity<ExceptionResponse> handleInvalidJwtAuthenticationExceptions(
 			Exception ex, WebRequest request) {
 		
@@ -66,6 +66,6 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 				request.getDescription(false));
 		
 		return new ResponseEntity<>(exceptionResponse, HttpStatus.FORBIDDEN);
-	}
+	}**/
 
 }

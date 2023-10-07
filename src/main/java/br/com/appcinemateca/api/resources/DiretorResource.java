@@ -141,7 +141,7 @@ public class DiretorResource {
 	public ResponseEntity<DiretorDTO> update(@PathVariable Long id, @RequestBody DiretorDTO obj) {
 		var entity = mapper.map(obj, DiretorDTO.class);
 		var vo = mapper.map(service.update(entity), DiretorDTO.class);
-		//vo.add(linkTo(methodOn(AtorResource.class).findById(vo.getId())).withSelfRel());
+		//vo.add(linkTo(methodOn(DiretorResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}

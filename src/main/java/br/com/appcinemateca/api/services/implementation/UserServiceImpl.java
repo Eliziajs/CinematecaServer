@@ -1,9 +1,9 @@
 package br.com.appcinemateca.api.services.implementation;
 
+
 import br.com.appcinemateca.api.domain.User;
 import br.com.appcinemateca.api.dto.UserDTO;
 import br.com.appcinemateca.api.repositories.UserRepository;
-import br.com.appcinemateca.api.services.exceptions.DataIntegratyViolationException;
 import br.com.appcinemateca.api.services.exceptions.ObjectNotFoundException;
 import br.com.appcinemateca.api.services.interfaces.UserServices;
 import org.modelmapper.ModelMapper;
@@ -32,19 +32,16 @@ public class UserServiceImpl implements UserServices {
     public List<User> findAll() {
         return repository.findAll();
     }
-    
-   
-	@Override
+    @Override
     public User create(UserDTO obj) {
-        findByEmail(obj);
         return repository.save(mapper.map(obj, User.class));
     }
 
     @Override
     public User update(UserDTO obj) {
-        findByEmail(obj);
         return repository.save(mapper.map(obj, User.class));
     }
+
 
     @Override
     public void delete(Long id) {
@@ -52,10 +49,5 @@ public class UserServiceImpl implements UserServices {
         repository.deleteById(id);
     }
 
-    private void findByEmail(UserDTO obj) {
-        Optional<User> user = repository.findByEmail(obj.getEmail());
-        if(user.isPresent() && !user.get().getId().equals(obj.getId())) {
-            throw new DataIntegratyViolationException("E-mail já cadastrado no sistema");
-        }
-    }
+
 }

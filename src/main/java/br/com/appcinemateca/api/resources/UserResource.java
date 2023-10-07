@@ -1,8 +1,10 @@
 package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
+
 import br.com.appcinemateca.api.domain.User;
 import br.com.appcinemateca.api.dto.UserDTO;
+
 import br.com.appcinemateca.api.services.interfaces.UserServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -85,7 +87,7 @@ public class UserResource {
 	public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
 		User e = service.findById(id);
 		var v = mapper.map(e, UserDTO.class);
-		v.add(linkTo(methodOn(UserResource.class).findById(id)).withSelfRel());
+		//v.add(linkTo(methodOn(UserResource.class).findById(id)).withSelfRel());
 		return ResponseEntity.ok().body(v);
 	}
 
@@ -142,7 +144,7 @@ public class UserResource {
 	public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO obj) {
 		var entity = mapper.map(obj, UserDTO.class);
 		var vo = mapper.map(service.update(entity), UserDTO.class);
-		vo.add(linkTo(methodOn(UserResource.class).findById(vo.getId())).withSelfRel());
+		//vo.add(linkTo(methodOn(UserResource.class).findById(vo.getId())).withSelfRel());
 
 		return ResponseEntity.ok().body(vo);
 	}

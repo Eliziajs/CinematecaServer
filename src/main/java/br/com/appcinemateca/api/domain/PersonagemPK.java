@@ -1,5 +1,6 @@
 package br.com.appcinemateca.api.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

@@ -51,8 +51,8 @@ public class AtorServiceImpl implements AtorServices {
         repository.deleteById(id);
     }
 
-   /** private void findByEmail(CadastroDTO obj) {
-        Optional<Cadastro> cadastro = repository.findByEmail(obj.getEmail());
+   /** private void findByEmail(UserDTO obj) {
+        Optional<User> cadastro = repository.findByEmail(obj.getEmail());
         if(cadastro.isPresent() && !cadastro.get().getId().equals(obj.getId())) {
             throw new DataIntegratyViolationException("E-mail já cadastrado no sistema");
         }

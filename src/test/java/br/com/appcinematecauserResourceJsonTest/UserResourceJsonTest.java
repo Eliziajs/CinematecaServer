@@ -36,7 +36,7 @@ public class UserResourceJsonTest extends AbstractIntegrationTest{
 
 	private static RequestSpecification specification;
 	private static ObjectMapper objectMapper;
-	private static UserDTO user;
+	private static UserDTO user = new UserDTO(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
 
 	
 	@BeforeAll
@@ -44,7 +44,7 @@ public class UserResourceJsonTest extends AbstractIntegrationTest{
 		objectMapper = new ObjectMapper();
 		objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		
-		user =new UserDTO();
+		user = new UserDTO(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
 	}
 	
 	@Test
@@ -73,13 +73,13 @@ public class UserResourceJsonTest extends AbstractIntegrationTest{
 		UserDTO createdUser = objectMapper.readValue(content, UserDTO.class);
 		user =createdUser;
 		
-		assertNotNull(createdUser.getUserName());
+		assertNotNull(createdUser.getUsername());
 		assertNotNull(createdUser.getEmail());
 		
 		
 		assertTrue(createdUser.getId()>0);
 		
-		assertNotNull("Ana",createdUser.getUserName());
+		assertNotNull("Ana",createdUser.getUsername());
 		assertNotNull("ana@email.com",createdUser.getEmail());
 	}
 	@Test
@@ -137,13 +137,13 @@ public class UserResourceJsonTest extends AbstractIntegrationTest{
 		UserDTO createdPerson = objectMapper.readValue(content, UserDTO.class);
 		user =createdPerson;
 		
-		assertNotNull(createdPerson.getUserName());
+		assertNotNull(createdPerson.getUsername());
 		assertNotNull(createdPerson.getEmail());
 		
 		
 		assertTrue(createdPerson.getId()>0);
 		
-		assertNotNull("Ana",createdPerson.getUserName());
+		assertNotNull("Ana",createdPerson.getUsername());
 		assertNotNull("ana@email.com",createdPerson.getEmail());
 	}
 	@Test
@@ -174,7 +174,7 @@ public class UserResourceJsonTest extends AbstractIntegrationTest{
 	}
 
 	private void mockPerson() {
-		user.setUserName("Ana");
+		user.setUsername("Ana");
 		user.setEmail("ana@email.com");
 	}
 }

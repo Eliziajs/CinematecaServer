@@ -43,13 +43,14 @@ public class Filme implements Serializable {
 	@JoinColumn(name = "diretor_id")
 	private Diretor diretor;
 
-	@JsonManagedReference
-	@OneToMany(mappedBy = "id.filme") // id.ator estudar o caso
+	//@JsonManagedReference
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "id.filme") // id.ator estudar o caso
 	private Set<Personagem> personagem = new HashSet<>();
 
 	//List<Person> pessoas = new ArrayList<>();
 	@JsonBackReference
-	@OneToMany(mappedBy = "filme")
+	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "filme")
 	List<Curtida> curtidas = new ArrayList<>();
 
 	public List<Curtida> getCurtida() {
