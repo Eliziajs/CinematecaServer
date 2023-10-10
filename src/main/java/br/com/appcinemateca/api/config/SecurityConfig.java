@@ -1,50 +1,45 @@
-/**package br.com.appcinemateca.api.config;
+package br.com.appcinemateca.api.config;
 
-
-import br.com.appcinemateca.api.services.interfaces.UserServices;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.proxy.NoOp;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+/**@EnableWebSecurity
+public class SecurityConfig implements WebMvcConfigurer {
     @Autowired
-    private UserServices userService;
-    @Override
+    private UserServiceDatailsImpl usuarioService;
+
+    @Bean
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-            .userDetailsService(userService)
-            .passwordEncoder(passwordEncoder());
+                .userDetailsService(usuarioService)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
-    public AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .cors()
-        .and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .httpBasic().disable()
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeHttpRequests()
+                .requestMatchers(
+                        "/auth/signin",
+                        "/auth/refresh",
+                        "/api-docs/**",
+                        "/swagger-ui/**",
+                        "/v3/**",
+                        "/filmes/**")
+                .permitAll()
+                .requestMatchers("/**").authenticated()
+                .requestMatchers("/users").denyAll();
 
+        return http.build();
     }
-
     @Bean
     public PasswordEncoder passwordEncoder(){
         return NoOpPasswordEncoder.getInstance();
     }
-}
+}**/

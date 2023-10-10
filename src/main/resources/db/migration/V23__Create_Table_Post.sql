@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `mensagem` varchar(255) DEFAULT NULL,
   `data` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-);
+)
 
 
 

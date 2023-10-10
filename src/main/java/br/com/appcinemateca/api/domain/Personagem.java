@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "personagens")
+@Table(name = "personagem")
 public class Personagem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -15,25 +15,25 @@ public class Personagem implements Serializable {
 	@EmbeddedId
 	private PersonagemPK id = new PersonagemPK();
 	@Column(name = "nome")
-	private String personagem;
+	private String nome;
 
 	public Personagem() {
 
 	}
 
-	public Personagem(String personagem, Filme filme, Ator ator) {
+	public Personagem(String nome, Filme filme, Ator ator) {
 		super();
-		this.personagem = personagem;
+		this.nome = nome;
 		id.setAtor(ator);
 		id.setFilme(filme);
 	}
 
-	public String getPersonagem() {
-		return personagem;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setPersonagem(String personagem) {
-		this.personagem = personagem;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public PersonagemPK getId() {

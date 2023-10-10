@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "ator")
@@ -20,16 +18,15 @@ public class Ator implements Serializable {
 	@Column(name = "nome")
 	private String nome;
 
-	//List<Filme> filmes = new ArrayList<>();
+	List<Filme> filmes = new ArrayList<>();
 
 	@JsonBackReference
-	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "id.ator")
+	@OneToMany(mappedBy = "id.ator")
 	private Set<Personagem> personagem = new HashSet<>();
 
 	public Ator() {
 
 	}
-
 	public Ator(Long id, String nome) {
 		super();
 		this.id = id;
@@ -52,13 +49,13 @@ public class Ator implements Serializable {
 		this.nome = nome;
 	}
 
-	/*public Set<Personagem> getPersonagem() {
+	public Set<Personagem> getPersonagem() {
 		return personagem;
 	}
 
 	public void setPersonagem(Set<Personagem> personagem) {
 		this.personagem = personagem;
-	}*/
+	}
 
 	@Override
 	public int hashCode() {

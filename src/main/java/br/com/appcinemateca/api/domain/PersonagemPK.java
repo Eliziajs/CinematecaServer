@@ -1,6 +1,5 @@
 package br.com.appcinemateca.api.domain;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -12,10 +11,12 @@ import java.util.Objects;
 public class PersonagemPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+
 	@ManyToOne
 	@JoinColumn(name = "filme_id")
 	private Filme filme;
 
+	//@ManyToOne(cascade= CascadeType.REMOVE)
 	@ManyToOne
 	@JoinColumn(name = "ator_id")
 	private Ator ator;

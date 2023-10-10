@@ -13,22 +13,21 @@ public class FilmeDTO implements Serializable {
 	private String titulo;
 	private Integer ano;
 	private String sinopse;
-	private Date dataCadastro = new Date();
+	private Date data = new Date();
 
-	private GeneroDTO generos;
+
+
 	public FilmeDTO() {
 
 	}
 
-	public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, GeneroDTO generos, DiretorDTO diretor, Date dataCadastro) {
+	public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;
 		this.sinopse = sinopse;
-		this.generos = generos;
-		this.dataCadastro = dataCadastro;
-
+		this.data = data;
 	}
 
 	public Long getId() {
@@ -65,20 +64,20 @@ public class FilmeDTO implements Serializable {
 	
 
 	public Date getDataCadastro() {
-		return dataCadastro;
+		return data;
 	}
 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
+	public void setDataCadastro(Date data) {
+		this.data = data;
 	}
 
-	public GeneroDTO getGeneros() {
+	/**public GeneroDTO getGeneros() {
 		return generos;
 	}
 
 	public void setGeneros(GeneroDTO generos) {
 		this.generos = generos;
-	}
+	}**/
 
 	@Override
 	public int hashCode() {

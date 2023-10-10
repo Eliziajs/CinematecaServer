@@ -1,6 +1,8 @@
 package br.com.appcinemateca.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -36,11 +38,20 @@ public class User implements Serializable {
         @NotEmpty(message = "{campo.password.obrigatorio}")
         private String password;
 
+        @JsonIgnore
+        @ManyToMany
+        @JoinTable(name = "USER_FILME", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "filme_id"))
+        private List<Filme> filmes = new ArrayList<>();
+
+        @JsonManagedReference
+        @ManyToMany(cascade = CascadeType.PERSIST)
+        @JoinTable(name = "USER_POST", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "post_id"))
+        private List<Post> posts = new ArrayList<>();
         @JsonBackReference
         @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
         List<Curtida> curtidas = new ArrayList<>();
 
-        public User(Long id, String name, String sobrenome, String nascimento, String email, Integer status, String data) {
+        public User() {
         }
 
     public User(Long id, String nome, String sobrenome, Date nascimento, String email, int status, Date data) {

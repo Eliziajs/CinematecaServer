@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS `personagens` (
-  `nome` varchar(255) DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `personagem` (
+  `personagem` varchar(255) DEFAULT NULL,
   `filme_id` bigint NOT NULL,
   `ator_id` bigint NOT NULL,
   PRIMARY KEY (`ator_id`,`filme_id`),

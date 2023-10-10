@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.*;
@@ -43,12 +41,11 @@ public class Filme implements Serializable {
 	@JoinColumn(name = "diretor_id")
 	private Diretor diretor;
 
-	//@JsonManagedReference
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "id.filme") // id.ator estudar o caso
 	private Set<Personagem> personagem = new HashSet<>();
 
-	//List<Person> pessoas = new ArrayList<>();
+
 	@JsonBackReference
 	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "filme")
 	List<Curtida> curtidas = new ArrayList<>();
@@ -56,17 +53,16 @@ public class Filme implements Serializable {
 	public List<Curtida> getCurtida() {
 		return curtidas;
 	}
+	List<User> users = new ArrayList<>();
 	public Filme() {
 	}
 
-	public Filme(Long id, String titulo, Integer ano, String sinopse, Genero generos, Diretor diretor, Date data) {
+	public Filme(Long id, String titulo, Integer ano, String sinopse, Date data) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;
 		this.sinopse = sinopse;
-		this.generos = generos;
-		this.diretor = diretor;
 		this.data = data;
 
 	}
@@ -78,9 +74,9 @@ public class Filme implements Serializable {
 		}
 		return lista;
 	}
-	/*public void setPessoas(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
-	}*/
+	public  void setPessoas(List<User> pessoas) {
+		this.users = pessoas;
+	}
 
 	public Long getId() {
 		return id;

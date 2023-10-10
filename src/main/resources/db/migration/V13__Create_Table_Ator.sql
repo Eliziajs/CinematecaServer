@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `ator` (
   `nome` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 
-);
+)
 
 
 

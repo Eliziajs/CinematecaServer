@@ -1,6 +1,6 @@
 package br.com.appcinemateca.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -22,14 +22,9 @@ public class Post implements Serializable {
 	private String mensagem;
 	@Column(name = "data")
 	private Date data = new Date();
-	//@Column(name = "tipoMsg")
-	//private int tipoMsg;
-
-
-
-	/*@JsonIgnore
-	@ManyToMany (mappedBy = "mensagens")
-	private List<Pessoa> pessoas = new  ArrayList<>();*/
+	@JsonIgnore
+	@ManyToMany (mappedBy = "posts")
+	private List<User> users = new ArrayList<>();
 
 	public Post() {
 		
@@ -41,15 +36,6 @@ public class Post implements Serializable {
 		this.data = data;
 		
 	}
-	
-	
-	/*public List<Pessoa> getPessoas() {
-		return pessoas;
-	}
-
-	public void setPessoas(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
-	}*/
 
 	public Long getId() {
 		return id;
@@ -75,9 +61,6 @@ public class Post implements Serializable {
 		this.data = data;
 	}
 
-	/*public TipoMensagem getTipoMsg() {
-		return TipoMensagem.toEnum(tipoMsg);
-	}*/
 	
 	@Override
 	public int hashCode() {

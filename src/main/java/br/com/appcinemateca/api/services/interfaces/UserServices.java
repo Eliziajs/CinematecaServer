@@ -13,4 +13,6 @@ public interface UserServices {
     User create(UserDTO obj);
     User update(UserDTO obj);
     void delete(Long id);
+
+
 }

@@ -69,12 +69,5 @@ public class Diretor implements Serializable {
 		return Objects.equals(id, diretor.id);
 	}
 
-	@Override
-	public String toString() {
-		return "Diretor{" +
-				"id=" + id +
-				", nome='" + nome + '\'' +
-				", filmes=" + filmes +
-				'}';
-	}
+
 }
