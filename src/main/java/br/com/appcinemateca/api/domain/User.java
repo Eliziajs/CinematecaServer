@@ -32,20 +32,20 @@ public class User implements Serializable {
         @Column(name = "data")
         private Date data = new Date();
         @Column(name = "username", unique = true)
-        @NotEmpty(message = "{campo.username.obrigatorio}")
+        //@NotEmpty(message = "{campo.username.obrigatorio}")
         private String username;
         @Column(name = "password")
-        @NotEmpty(message = "{campo.password.obrigatorio}")
+        //@NotEmpty(message = "{campo.password.obrigatorio}")
         private String password;
 
         @JsonIgnore
-        @ManyToMany
+        @ManyToMany(cascade = CascadeType.REMOVE)
         @JoinTable(name = "USER_FILME", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "filme_id"))
         private List<Filme> filmes = new ArrayList<>();
 
         @JsonManagedReference
         @ManyToMany(cascade = CascadeType.PERSIST)
-        @JoinTable(name = "USER_POST", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "post_id"))
+        @JoinTable(name = "USER_POST", joinColumns = @JoinColumn(name = "users_id"), inverseJoinColumns = @JoinColumn(name = "post_id"))
         private List<Post> posts = new ArrayList<>();
         @JsonBackReference
         @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
@@ -68,6 +68,12 @@ public class User implements Serializable {
         this.id = id;
         this.username = username;
         this.password = password;
+    }
+
+    public User(List<Filme> filmes, List<Post> posts, List<Curtida> curtidas) {
+        this.filmes = filmes;
+        this.posts = posts;
+        this.curtidas = curtidas;
     }
 
     public Long getId() {

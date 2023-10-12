@@ -16,15 +16,19 @@ public class CurtidaDTO implements Serializable {
 
     public Long quantidade;
 
-    private Date data;
+    private Date data = new Date();
+    private FilmeDTO filmeDTO;
+    private UserDTO userDTO;
 
     public CurtidaDTO() {
     }
 
-    public CurtidaDTO(Long id, Long quantidade, Date data) {
+    public CurtidaDTO(Long id, Long quantidade, Date data, FilmeDTO filmeDTO, UserDTO userDTO) {
         this.id = id;
         this.quantidade = quantidade;
         this.data = data;
+        this.filmeDTO = filmeDTO;
+        this.userDTO = userDTO;
     }
 
     public Long getId() {

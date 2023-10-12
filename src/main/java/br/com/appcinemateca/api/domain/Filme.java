@@ -50,21 +50,20 @@ public class Filme implements Serializable {
 	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "filme")
 	List<Curtida> curtidas = new ArrayList<>();
 
-	public List<Curtida> getCurtida() {
-		return curtidas;
-	}
+	//@ManyToMany (cascade = CascadeType.REMOVE,mappedBy = "filmes")
 	List<User> users = new ArrayList<>();
+
 	public Filme() {
 	}
 
-	public Filme(Long id, String titulo, Integer ano, String sinopse, Date data) {
-		super();
+	public Filme(Long id, String titulo, Integer ano, String sinopse, Date data, Genero generos, Diretor diretor) {
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;
 		this.sinopse = sinopse;
 		this.data = data;
-
+		this.generos = generos;
+		this.diretor = diretor;
 	}
 
 	public List<Ator> getAtores() {
@@ -74,8 +73,11 @@ public class Filme implements Serializable {
 		}
 		return lista;
 	}
-	public  void setPessoas(List<User> pessoas) {
-		this.users = pessoas;
+	public List<Curtida> getCurtida() {
+		return curtidas;
+	}
+	public  void setUser(List<User> Users) {
+		this.users = users;
 	}
 
 	public Long getId() {

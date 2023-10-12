@@ -9,7 +9,7 @@ public class PostDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String mensagem;
-	private Date data;
+	private Date data = new Date();
 	private int tipoMsg;
 
 	public PostDTO() {

@@ -30,17 +30,18 @@ public class Curtida implements Serializable {
     @JoinColumn(name = "filme_id")
     private Filme filme;
 
-
-
     public Curtida() {
     }
 
-    public Curtida(Long id, Long quantidade, Date data) {
+    public Curtida(Long id, Long quantidade, Date data, User user, Filme filme) {
         this.id = id;
         this.quantidade = quantidade;
         this.data = data;
+        this.user = user;
+        this.filme = filme;
     }
-   public User getUser() {
+
+    public User getUser() {
         return user;
     }
 
