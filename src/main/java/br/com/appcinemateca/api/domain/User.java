@@ -47,34 +47,15 @@ public class User implements Serializable {
         @ManyToMany(cascade = CascadeType.PERSIST)
         @JoinTable(name = "USER_POST", joinColumns = @JoinColumn(name = "users_id"), inverseJoinColumns = @JoinColumn(name = "post_id"))
         private List<Post> posts = new ArrayList<>();
-        @JsonBackReference
+
         @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
         List<Curtida> curtidas = new ArrayList<>();
 
         public User() {
         }
 
-    public User(Long id, String nome, String sobrenome, Date nascimento, String email, int status, Date data) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.nascimento = nascimento;
-        this.email = email;
-        this.status = status;
-        this.data = data;
-    }
 
-    public User(Long id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
 
-    public User(List<Filme> filmes, List<Post> posts, List<Curtida> curtidas) {
-        this.filmes = filmes;
-        this.posts = posts;
-        this.curtidas = curtidas;
-    }
 
     public Long getId() {
         return id;

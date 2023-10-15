@@ -3,6 +3,7 @@ package br.com.appcinemateca.api.resources;
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
 
 import br.com.appcinemateca.api.domain.User;
+import br.com.appcinemateca.api.dto.AtorDTO;
 import br.com.appcinemateca.api.dto.UserDTO;
 
 import br.com.appcinemateca.api.services.interfaces.UserServices;
@@ -58,15 +59,10 @@ public class UserResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<UserDTO>> findAll() {
-
-		List<User> list = service.findAll();
-		List<UserDTO> listDTO = list.stream().map(x -> mapper.map(x, UserDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(UserResource.class).findAll()).withSelfRel();
-		CollectionModel<UserDTO> result = CollectionModel.of(listDTO, link);
-		// return result;
-		return ResponseEntity.ok().body(result);
-
+	public ResponseEntity<List<UserDTO>> findAll() {
+		return ResponseEntity.ok() .body(service.findAll()
+				.stream().map(x -> mapper.map(x, UserDTO.class))
+				.collect(Collectors.toList()));
 	}
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 

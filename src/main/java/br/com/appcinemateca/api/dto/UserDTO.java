@@ -1,5 +1,9 @@
 package br.com.appcinemateca.api.dto;
 
+import br.com.appcinemateca.api.domain.Filme;
+import br.com.appcinemateca.api.domain.Post;
+import br.com.appcinemateca.api.domain.User;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -24,9 +28,13 @@ public class UserDTO implements Serializable {
     private String username;
 
     private String password;
+    private Post post;
+
+    private Filme filme;
 
     public UserDTO(){}
-    public UserDTO(Long id, String nome, String sobrenome, Date nascimento, String email, int status, Date data) {
+
+    public UserDTO(Long id, String nome, String sobrenome, Date nascimento, String email, int status, Date data, String username, String password, Post post, Filme filme) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -34,6 +42,10 @@ public class UserDTO implements Serializable {
         this.email = email;
         this.status = status;
         this.data = data;
+        this.username = username;
+        this.password = password;
+        this.post = post;
+        this.filme = filme;
     }
 
     public Long getId() {
@@ -76,13 +88,13 @@ public class UserDTO implements Serializable {
         this.email = email;
     }
 
-  /**  public int getStatus() {
+    public int getStatus() {
         return status;
     }
 
     public void setStatus(int status) {
         this.status = status;
-    }**/
+    }
 
     public Date getData() {
         return data;
@@ -108,32 +120,33 @@ public class UserDTO implements Serializable {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                ", nascimento=" + nascimento +
-                ", email='" + email + '\'' +
-                ", status=" + status +
-                ", data=" + data +
-                ", userName='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public Filme getFilme() {
+        return filme;
+    }
+
+    public void setFilme(Filme filme) {
+        this.filme = filme;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserDTO that = (UserDTO) o;
-        return status == that.status && Objects.equals(id, that.id) && Objects.equals(nome, that.nome) && Objects.equals(sobrenome, that.sobrenome) && Objects.equals(nascimento, that.nascimento) && Objects.equals(email, that.email) && Objects.equals(data, that.data) && Objects.equals(username, that.username) && Objects.equals(password, that.password);
+        UserDTO userDTO = (UserDTO) o;
+        return status == userDTO.status && Objects.equals(id, userDTO.id) && Objects.equals(nome, userDTO.nome) && Objects.equals(sobrenome, userDTO.sobrenome) && Objects.equals(nascimento, userDTO.nascimento) && Objects.equals(email, userDTO.email) && Objects.equals(data, userDTO.data) && Objects.equals(username, userDTO.username) && Objects.equals(password, userDTO.password) && Objects.equals(post, userDTO.post) && Objects.equals(filme, userDTO.filme);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, sobrenome, nascimento, email, status, data, username, password);
+        return Objects.hash(id, nome, sobrenome, nascimento, email, status, data, username, password, post, filme);
     }
 }
 

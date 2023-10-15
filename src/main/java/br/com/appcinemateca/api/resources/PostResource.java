@@ -3,6 +3,7 @@ package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
 import br.com.appcinemateca.api.domain.Post;
+import br.com.appcinemateca.api.dto.AtorDTO;
 import br.com.appcinemateca.api.dto.PostDTO;
 import br.com.appcinemateca.api.services.interfaces.PostServices;
 import io.swagger.v3.oas.annotations.Operation;
@@ -56,16 +57,10 @@ public class PostResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<PostDTO>> findAll() {
-
-		List<Post> list = service.findAll();
-		List<PostDTO> listDTO = list.stream().map(x -> mapper.map(x, PostDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(PostResource.class).findAll()).withSelfRel();
-		CollectionModel<PostDTO> result = CollectionModel.of(listDTO, link);
-		// return result;
-		return ResponseEntity.ok().body(result);
-
-
+	public ResponseEntity<List<PostDTO>> findAll() {
+		return ResponseEntity.ok() .body(service.findAll()
+				.stream().map(x -> mapper.map(x, PostDTO.class))
+				.collect(Collectors.toList()));
 	}
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 

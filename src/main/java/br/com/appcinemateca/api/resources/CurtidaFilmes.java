@@ -2,6 +2,7 @@ package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
 import br.com.appcinemateca.api.domain.Curtida;
+import br.com.appcinemateca.api.dto.AtorDTO;
 import br.com.appcinemateca.api.dto.CurtidaDTO;
 import br.com.appcinemateca.api.repositories.CurtidaRepository;
 import br.com.appcinemateca.api.services.interfaces.CurtidaServices;
@@ -14,12 +15,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -81,7 +81,7 @@ public class CurtidaFilmes {
             }
     )
 
-    public ResponseEntity<CollectionModel<CurtidaDTO>> findByQuantidadeAndFilme_id(Long quantidade, Long filme_id) {
+   /** public ResponseEntity<CollectionModel<CurtidaDTO>> findByQuantidadeAndFilme_id(Long quantidade, Long filme_id) {
 
         List<Curtida> list = service.findByQuantidadeAndFilme_id(quantidade, filme_id);
         List<CurtidaDTO> listDTO = list.stream().map(x -> mapper.map(x, CurtidaDTO.class)).collect(Collectors.toList());
@@ -89,5 +89,11 @@ public class CurtidaFilmes {
         CollectionModel<CurtidaDTO> result = CollectionModel.of(listDTO, link);
         // return result;
         return ResponseEntity.ok().body(result);
+    }**/
+    public ResponseEntity<List<CurtidaDTO>> findByFilme_id(Long filme_id){
+        return ResponseEntity.ok() .body(service.findAll()
+                .stream().map(x -> mapper.map(x, CurtidaDTO.class))
+                .collect(Collectors.toList()));
     }
+
 }

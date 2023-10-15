@@ -20,27 +20,23 @@ public class FilmeDTO implements Serializable {
 	private String sinopse;
 	private Date data = new Date();
 
-	private GeneroDTO generoDTO;
-	private DiretorDTO diretorDTO;
-	private PersonagemDTO personagemDTO;
+	private Genero generos;
+	private Diretor diretor;
+	private Personagem personagem;
 
 	public FilmeDTO() {
 
 	}
-	public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data, GeneroDTO generoDTO, DiretorDTO diretorDTO) {
+
+	public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data, Genero generos, Diretor diretor, Personagem personagem) {
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;
 		this.sinopse = sinopse;
 		this.data = data;
-		this.generoDTO = generoDTO;
-		this.diretorDTO = diretorDTO;
-
-	}
-
-
-	public Long getId() {
-		return id;
+		this.generos = generos;
+		this.diretor = diretor;
+		this.personagem = personagem;
 	}
 
 	public void setId(Long id) {
@@ -72,35 +68,40 @@ public class FilmeDTO implements Serializable {
 	}
 	
 
-	public Date getDataCadastro() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setDataCadastro(Date data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
-	/**public void setGeneroDTO(GeneroDTO generoDTO) {
-		this.generoDTO = generoDTO;
-	}
-	public DiretorDTO getDiretorDTO() {
-		return diretorDTO;
+	public Long getId() {
+		return id;
 	}
 
-	public void setDiretorDTO(DiretorDTO diretorDTO) {
-		this.diretorDTO = diretorDTO;
+	public Genero getGeneros() {
+		return generos;
 	}
 
-	public GeneroDTO getGeneroDTO() {
-		return generoDTO;
+	public void setGeneros(Genero generos) {
+		this.generos = generos;
 	}
 
-	public PersonagemDTO getPersonagemDTO() {
-		return personagemDTO;
+	public Diretor getDiretor() {
+		return diretor;
 	}
 
-	public void setPersonagemDTO(PersonagemDTO personagemDTO) {
-		this.personagemDTO = personagemDTO;
+	public void setDiretor(Diretor diretor) {
+		this.diretor = diretor;
+	}
+
+	public Personagem getPersonagem() {
+		return personagem;
+	}
+
+	public void setPersonagem(Personagem personagem) {
+		this.personagem = personagem;
 	}
 
 	/**@JsonIgnore

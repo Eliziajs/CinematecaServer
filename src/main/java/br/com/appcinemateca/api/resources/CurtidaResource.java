@@ -5,6 +5,7 @@ import br.com.appcinemateca.api.config.serialization.converter.MediaType;
 import br.com.appcinemateca.api.domain.Curtida;
 import br.com.appcinemateca.api.domain.Filme;
 import br.com.appcinemateca.api.dto.CurtidaDTO;
+import br.com.appcinemateca.api.dto.FilmeDTO;
 import br.com.appcinemateca.api.repositories.CurtidaRepository;
 import br.com.appcinemateca.api.services.interfaces.CurtidaServices;
 import io.swagger.v3.oas.annotations.Operation;
@@ -60,17 +61,12 @@ public class CurtidaResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<CurtidaDTO>> findAll() {
-
-		List<Curtida> list = service.findAll();
-		List<CurtidaDTO> listDTO = list.stream().map(x -> mapper.map(x, CurtidaDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(CurtidaResource.class).findAll()).withSelfRel();
-		CollectionModel<CurtidaDTO> result = CollectionModel.of(listDTO, link);
-		// return result;
-		return ResponseEntity.ok().body(result);
-
-
+	public ResponseEntity<List<CurtidaDTO>> findAll() {
+		return ResponseEntity.ok() .body(service.findAll()
+				.stream().map(x -> mapper.map(x, CurtidaDTO.class))
+				.collect(Collectors.toList()));
 	}
+
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 
 			MediaType.APPLICATION_XML,MediaType.APPLICATION_YML})

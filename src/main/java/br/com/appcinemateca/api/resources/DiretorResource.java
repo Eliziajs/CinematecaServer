@@ -3,6 +3,7 @@ package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
 import br.com.appcinemateca.api.domain.Diretor;
+import br.com.appcinemateca.api.dto.AtorDTO;
 import br.com.appcinemateca.api.dto.DiretorDTO;
 import br.com.appcinemateca.api.services.interfaces.DiretorServices;
 import io.swagger.v3.oas.annotations.Operation;
@@ -56,16 +57,10 @@ public class DiretorResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<DiretorDTO>> findAll() {
-
-		List<Diretor> list = service.findAll();
-		List<DiretorDTO> listDTO = list.stream().map(x -> mapper.map(x, DiretorDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(DiretorResource.class).findAll()).withSelfRel();
-		CollectionModel<DiretorDTO> result = CollectionModel.of(listDTO, link);
-		// return result;
-		return ResponseEntity.ok().body(result);
-
-
+	public ResponseEntity<List<DiretorDTO>> findAll() {
+		return ResponseEntity.ok() .body(service.findAll()
+				.stream().map(x -> mapper.map(x, DiretorDTO.class))
+				.collect(Collectors.toList()));
 	}
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 

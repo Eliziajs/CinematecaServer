@@ -6,6 +6,7 @@ import br.com.appcinemateca.api.domain.Ator;
 import br.com.appcinemateca.api.dto.AtorDTO;
 //import br.com.appcinemateca.api.dto.UserDTO;
 import br.com.appcinemateca.api.dto.DiretorDTO;
+import br.com.appcinemateca.api.dto.FilmeDTO;
 import br.com.appcinemateca.api.repositories.AtorRepository;
 import br.com.appcinemateca.api.repositories.UserRepository;
 import br.com.appcinemateca.api.services.interfaces.AtorServices;
@@ -61,17 +62,12 @@ public class AtorResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<AtorDTO>> findAll() {
-
-		List<Ator> list = service.findAll();
-		List<AtorDTO> listDTO = list.stream().map(x -> mapper.map(x, AtorDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(AtorResource.class).findAll()).withSelfRel();
-		CollectionModel<AtorDTO> result = CollectionModel.of(listDTO, link);
-		// return result;
-		return ResponseEntity.ok().body(result);
-
-
+	public ResponseEntity<List<AtorDTO>> findAll() {
+		return ResponseEntity.ok() .body(service.findAll()
+				.stream().map(x -> mapper.map(x, AtorDTO.class))
+				.collect(Collectors.toList()));
 	}
+
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 
 			MediaType.APPLICATION_XML,MediaType.APPLICATION_YML})

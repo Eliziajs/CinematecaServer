@@ -82,13 +82,4 @@ public class Genero implements Serializable {
 		return Objects.hash(id, nome, descricao, filmes);
 	}
 
-	@Override
-	public String toString() {
-		return "Genero{" +
-				"id=" + id +
-				", nome='" + nome + '\'' +
-				", descricao='" + descricao + '\'' +
-				", filmes=" + filmes +
-				'}';
-	}
 }

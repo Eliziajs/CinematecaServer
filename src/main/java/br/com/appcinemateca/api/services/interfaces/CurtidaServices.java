@@ -17,7 +17,7 @@ public interface CurtidaServices {
     Curtida update(CurtidaDTO obj);
 
     void delete(Long id);
-    List<Curtida> findByQuantidadeAndFilme_id(Long quantidade, Long filme_id);
+    List<Curtida> findByQuantidade(Long quantidade);
     List<Curtida>buscarPorQuantidade(Long quantidade);
 
 }

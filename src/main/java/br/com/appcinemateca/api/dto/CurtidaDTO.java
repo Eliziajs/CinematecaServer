@@ -3,6 +3,8 @@ package br.com.appcinemateca.api.dto;
 //Avaliar o tipo de dado long para o atributo qtd
 
 import br.com.appcinemateca.api.domain.Curtida;
+import br.com.appcinemateca.api.domain.Filme;
+import br.com.appcinemateca.api.domain.User;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,18 +19,18 @@ public class CurtidaDTO implements Serializable {
     public Long quantidade;
 
     private Date data = new Date();
-    private FilmeDTO filmeDTO;
-    private UserDTO userDTO;
+    private Filme filme;
+    private User user;
 
     public CurtidaDTO() {
     }
 
-    public CurtidaDTO(Long id, Long quantidade, Date data, FilmeDTO filmeDTO, UserDTO userDTO) {
+    public CurtidaDTO(Long id, Long quantidade, Date data, Filme filme, User user) {
         this.id = id;
         this.quantidade = quantidade;
         this.data = data;
-        this.filmeDTO = filmeDTO;
-        this.userDTO = userDTO;
+        this.filme = filme;
+        this.user = user;
     }
 
     public Long getId() {
@@ -55,21 +57,33 @@ public class CurtidaDTO implements Serializable {
         this.data = data;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public Filme getFilme() {
+        return filme;
+    }
+
+    public void setFilme(Filme filme) {
+        this.filme = filme;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        CurtidaDTO other = (CurtidaDTO) obj;
-        return Objects.equals(id, other.id);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CurtidaDTO that = (CurtidaDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(quantidade, that.quantidade) && Objects.equals(data, that.data) && Objects.equals(filme, that.filme) && Objects.equals(user, that.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, quantidade, data, filme, user);
     }
 }
 

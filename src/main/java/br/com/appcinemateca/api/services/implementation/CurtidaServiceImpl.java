@@ -49,8 +49,8 @@ public class CurtidaServiceImpl implements CurtidaServices {
         findById(id);
         repository.deleteById(id);
     }
-    public List<Curtida> findByQuantidadeAndFilme_id(Long quantidade, Long filme_id){
-       return repository.findByQuantidadeAndFilme_id(quantidade, filme_id);
+    public List<Curtida> findByQuantidade(Long quantidade){
+       return repository.findByQuantidade(quantidade);
     }
     public List<Curtida>buscarPorQuantidade(Long quantidade){
         return buscarPorQuantidade(quantidade);

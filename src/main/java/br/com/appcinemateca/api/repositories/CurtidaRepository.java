@@ -12,7 +12,7 @@ public interface CurtidaRepository extends JpaRepository<Curtida, Long> {
 
     // List<Curtida> findByQuantidade(Long quantidade);
 
-    List<Curtida> findByQuantidadeAndFilme_id(Long quantidade, Long filme_id);
+    List<Curtida> findByQuantidade(Long quantidade);
     @Query("from Curtida t where t.quantidade =:quantidade")// verificar sintaxe de não nullo
      List<Curtida>buscarPorQuantidade(Long quantidade);//ver sem parametro
 

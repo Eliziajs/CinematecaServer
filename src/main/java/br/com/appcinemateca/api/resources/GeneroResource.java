@@ -3,6 +3,7 @@ package br.com.appcinemateca.api.resources;
 
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
 import br.com.appcinemateca.api.domain.Genero;
+import br.com.appcinemateca.api.dto.AtorDTO;
 import br.com.appcinemateca.api.dto.GeneroDTO;
 import br.com.appcinemateca.api.services.interfaces.GeneroServices;
 import io.swagger.v3.oas.annotations.Operation;
@@ -55,16 +56,10 @@ public class GeneroResource {
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public ResponseEntity<CollectionModel<GeneroDTO>> findAll() {
-
-		List<Genero> list = service.findAll();
-		List<GeneroDTO> listDTO = list.stream().map(x -> mapper.map(x, GeneroDTO.class)).collect(Collectors.toList());
-		var link = linkTo(methodOn(GeneroResource.class).findAll()).withSelfRel();
-		CollectionModel<GeneroDTO> result = CollectionModel.of(listDTO, link);
-		// return result;
-		return ResponseEntity.ok().body(result);
-
-
+	public ResponseEntity<List<GeneroDTO>> findAll() {
+		return ResponseEntity.ok() .body(service.findAll()
+				.stream().map(x -> mapper.map(x, GeneroDTO.class))
+				.collect(Collectors.toList()));
 	}
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = ID, produces = {MediaType.APPLICATION_JSON, 
