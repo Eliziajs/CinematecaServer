@@ -138,10 +138,7 @@ public class FilmeResource {
 	}
 
 
-	@PutMapping(value = ID,consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
-			MediaType.APPLICATION_YML}, 
-			produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,
-					MediaType.APPLICATION_YML})
+	@PutMapping(value = "/{id}")
 	@Operation(summary = "Updates a Register", description = "Updates a register",
 	tags = {"filme"},
 	responses = {@ApiResponse(description = "Success", responseCode = "200", 
@@ -154,11 +151,9 @@ public class FilmeResource {
 		@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 	}
 )
-	public ResponseEntity<FilmeDTO> update(@PathVariable Long id, @RequestBody @Valid FilmeDTO obj) {
+	public ResponseEntity<FilmeDTO> update(@PathVariable Long id, @RequestBody FilmeDTO obj) {
 		var entity = mapper.map(obj, FilmeDTO.class);
-		var vo = mapper.map(service.update(entity), FilmeDTO.class);
-		//vo.add(linkTo(methodOn(AtorResource.class).findById(vo.getId())).withSelfRel());
-
+		var vo = mapper.map(service.update(id,entity), FilmeDTO.class);
 		return ResponseEntity.ok().body(vo);
 	}
 	
@@ -178,5 +173,4 @@ public class FilmeResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-
 }

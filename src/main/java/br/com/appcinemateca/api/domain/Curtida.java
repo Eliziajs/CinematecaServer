@@ -1,6 +1,5 @@
 package br.com.appcinemateca.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -38,12 +37,11 @@ public class Curtida implements Serializable {
     public Curtida() {
     }
 
-    public Curtida(Long id, Long quantidade, Date data, User user, Filme filme) {
+    public Curtida(Long id, Long quantidade, Date data) {
         this.id = id;
         this.quantidade = quantidade;
         this.data = data;
-        this.user = user;
-        this.filme = filme;
+      
     }
 
     public Long getId() {

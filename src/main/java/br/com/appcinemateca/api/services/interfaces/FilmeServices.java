@@ -9,6 +9,6 @@ public interface FilmeServices {
     Filme findById(Long id);
     List<Filme> findAll();
     Filme create(FilmeDTO obj);
-    Filme update(FilmeDTO obj);
+    Filme update(Long id, FilmeDTO obj);
     void delete(Long id);
 }

@@ -42,7 +42,7 @@ public class FilmeServiceImpl implements FilmeServices {
     }
 
     @Override
-    public Filme update(FilmeDTO obj) {
+    public Filme update(Long id, FilmeDTO obj) {
         return repository.save(mapper.map(obj, Filme.class));
     }
 

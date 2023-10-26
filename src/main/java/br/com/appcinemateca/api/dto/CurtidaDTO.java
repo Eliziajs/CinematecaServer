@@ -2,7 +2,6 @@ package br.com.appcinemateca.api.dto;
 
 //Avaliar o tipo de dado long para o atributo qtd
 
-import br.com.appcinemateca.api.domain.Curtida;
 import br.com.appcinemateca.api.domain.Filme;
 import br.com.appcinemateca.api.domain.User;
 
@@ -25,12 +24,11 @@ public class CurtidaDTO implements Serializable {
     public CurtidaDTO() {
     }
 
-    public CurtidaDTO(Long id, Long quantidade, Date data, Filme filme, User user) {
+    public CurtidaDTO(Long id, Long quantidade, Date data) {
         this.id = id;
         this.quantidade = quantidade;
         this.data = data;
-        this.filme = filme;
-        this.user = user;
+
     }
 
     public Long getId() {

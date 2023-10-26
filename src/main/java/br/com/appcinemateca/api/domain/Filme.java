@@ -2,11 +2,10 @@
 
 package br.com.appcinemateca.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.*;
@@ -27,8 +26,10 @@ public class Filme implements Serializable {
 
 	@Column(name = "sinopse",nullable = false)
 	private String sinopse;
+
+	@Temporal(value = TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(name = "data", updatable = false)
-	@JsonFormat(pattern = "dd-MM-yyyy")
 	private Date data = new Date();
 
 	@JsonManagedReference
@@ -46,17 +47,22 @@ public class Filme implements Serializable {
 	private Set<Personagem> personagem = new HashSet<>();
 
 
-	@JsonBackReference
-	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "filme")
-	List<Curtida> curtidas = new ArrayList<>();
 
-	//@ManyToMany (cascade = CascadeType.REMOVE,mappedBy = "filmes")
-	List<User> users = new ArrayList<>();
+	/**@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "filme")
+	List<Curtida> curtidas = new ArrayList<>();**/
 
 	public Filme() {
 	}
 
-	public Filme(Long id, String titulo, Integer ano, String sinopse, Date data, Genero generos, Diretor diretor) {
+	public Filme(Long id, String titulo, Integer ano, String sinopse, Date data) {
+		this.id = id;
+		this.titulo = titulo;
+		this.ano = ano;
+		this.sinopse = sinopse;
+		this.data = data;
+	}
+
+	/**public Filme(Long id, String titulo, Integer ano, String sinopse, Date data, Genero generos, Diretor diretor, Set<Personagem> personagem) {
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;
@@ -64,7 +70,8 @@ public class Filme implements Serializable {
 		this.data = data;
 		this.generos = generos;
 		this.diretor = diretor;
-	}
+		this.personagem = personagem;
+	}**/
 
 	public List<Ator> getAtores() {
 		List<Ator> lista = new ArrayList<>();
@@ -73,12 +80,12 @@ public class Filme implements Serializable {
 		}
 		return lista;
 	}
-	public List<Curtida> getCurtida() {
+	/**public List<Curtida> getCurtida() {
 		return curtidas;
-	}
-	public  void setUser(List<User> Users) {
+	}**/
+	/**public  void setUser(List<User> Users) {
 		this.users = users;
-	}
+	}**/
 
 	public Long getId() {
 		return id;

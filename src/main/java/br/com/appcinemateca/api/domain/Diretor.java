@@ -21,7 +21,7 @@ public class Diretor implements Serializable {
 	private String nome;
 
 	@JsonBackReference
-	@OneToMany(mappedBy = "diretor")
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "diretor")
 	List<Filme> filmes = new ArrayList<>();
 
 	public Diretor() {

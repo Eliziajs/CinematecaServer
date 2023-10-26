@@ -1,10 +1,8 @@
 package br.com.appcinemateca.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -44,7 +42,7 @@ public class User implements Serializable {
         private List<Filme> filmes = new ArrayList<>();
 
         @JsonManagedReference
-        @ManyToMany(cascade = CascadeType.PERSIST)
+        @ManyToMany(cascade = CascadeType.REMOVE)
         @JoinTable(name = "USER_POST", joinColumns = @JoinColumn(name = "users_id"), inverseJoinColumns = @JoinColumn(name = "post_id"))
         private List<Post> posts = new ArrayList<>();
 

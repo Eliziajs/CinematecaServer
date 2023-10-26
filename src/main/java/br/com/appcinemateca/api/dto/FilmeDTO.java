@@ -2,14 +2,13 @@
 
 package br.com.appcinemateca.api.dto;
 
-import br.com.appcinemateca.api.domain.Ator;
 import br.com.appcinemateca.api.domain.Diretor;
 import br.com.appcinemateca.api.domain.Genero;
 import br.com.appcinemateca.api.domain.Personagem;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.Objects;
 
 public class FilmeDTO implements Serializable {
 	private static final long serialVersionUID = 1l;
@@ -28,7 +27,15 @@ public class FilmeDTO implements Serializable {
 
 	}
 
-	public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data, Genero generos, Diretor diretor, Personagem personagem) {
+	public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data) {
+		this.id = id;
+		this.titulo = titulo;
+		this.ano = ano;
+		this.sinopse = sinopse;
+		this.data = data;
+	}
+
+	/**public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data, Genero generos, Diretor diretor, Personagem personagem) {
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;
@@ -37,7 +44,7 @@ public class FilmeDTO implements Serializable {
 		this.generos = generos;
 		this.diretor = diretor;
 		this.personagem = personagem;
-	}
+	}**/
 
 	public void setId(Long id) {
 		this.id = id;
