@@ -27,12 +27,14 @@ public class FilmeDTO implements Serializable {
 
 	}
 
-	public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data) {
+	public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data, Genero genero, Diretor diretor) {
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;
 		this.sinopse = sinopse;
 		this.data = data;
+                this.generos = generos;
+                this.diretor = diretor;
 	}
 
 	/**public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data, Genero generos, Diretor diretor, Personagem personagem) {

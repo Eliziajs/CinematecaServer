@@ -36,7 +36,7 @@ public class UserResourceJsonTest extends AbstractIntegrationTest{
 
 	private static RequestSpecification specification;
 	private static ObjectMapper objectMapper;
-	private static UserDTO user = new UserDTO(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
+	private static UserDTO user = new UserDTO();
 
 	
 	@BeforeAll
@@ -44,7 +44,7 @@ public class UserResourceJsonTest extends AbstractIntegrationTest{
 		objectMapper = new ObjectMapper();
 		objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		
-		user = new UserDTO(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
+		user = new UserDTO();
 	}
 	
 	@Test

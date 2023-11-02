@@ -2,7 +2,6 @@ package br.com.appcinemateca.api.dto;
 
 import br.com.appcinemateca.api.domain.Filme;
 import br.com.appcinemateca.api.domain.Post;
-import br.com.appcinemateca.api.domain.User;
 
 import java.io.Serializable;
 import java.util.Date;

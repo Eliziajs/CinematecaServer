@@ -40,8 +40,8 @@ class UserResourceTest {
     private static final Integer STATUS   = 1;
     private static final String USERNAME   ="Lindizia";
 
-    private User user = new User(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
-    private UserDTO userDTO = new UserDTO(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
+    private User user = new User();
+    private UserDTO userDTO = new UserDTO();
 
 
     @InjectMocks
@@ -81,7 +81,7 @@ class UserResourceTest {
         when(service.findAll()).thenReturn(List.of(user));
         when(mapper.map(any(), any())).thenReturn(userDTO);
 
-        ResponseEntity<CollectionModel<UserDTO>> response = resource.findAll();
+        ResponseEntity<List<UserDTO>> response = resource.findAll();
 
         assertNotNull(response);
         assertNotNull(response.getBody());
@@ -137,7 +137,7 @@ class UserResourceTest {
     }
 
     private void startUser() {
-        user = new User(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
-        userDTO = new UserDTO(ID, NAME, SOBRENOME, NASCIMENTO, EMAIL, STATUS, DATA);
+        user = new User();
+        userDTO = new UserDTO();
     }
 }

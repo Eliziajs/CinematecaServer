@@ -2,8 +2,8 @@
 
 package br.com.appcinemateca.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,26 +27,24 @@ public class Filme implements Serializable {
 	@Column(name = "sinopse",nullable = false)
 	private String sinopse;
 
+        
 	@Temporal(value = TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "data", updatable = false)
 	private Date data = new Date();
 
-	@JsonManagedReference
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "genero_id")
 	private Genero generos;
 
-	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "diretor_id")
 	private Diretor diretor;
 
-	@JsonManagedReference
+        @JsonIgnore
 	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "id.filme") // id.ator estudar o caso
 	private Set<Personagem> personagem = new HashSet<>();
-
-
 
 	/**@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "filme")
 	List<Curtida> curtidas = new ArrayList<>();**/

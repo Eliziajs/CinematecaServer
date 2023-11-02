@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "curtida")
@@ -18,6 +19,8 @@ public class Curtida implements Serializable {
     private Long id;
     @Column(name = "quantidade")
     public Long quantidade;
+    
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "data")
     private Date data = new Date();
 
