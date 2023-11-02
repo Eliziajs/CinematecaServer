@@ -24,7 +24,6 @@ public class FilmeDTO implements Serializable {
 	private Personagem personagem;
 
 	public FilmeDTO() {
-
 	}
 
 	public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data, Genero genero, Diretor diretor) {
@@ -33,20 +32,23 @@ public class FilmeDTO implements Serializable {
 		this.ano = ano;
 		this.sinopse = sinopse;
 		this.data = data;
-                this.generos = generos;
-                this.diretor = diretor;
+		this.generos = genero;
+		this.diretor = diretor;
 	}
 
-	/**public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date data, Genero generos, Diretor diretor, Personagem personagem) {
-		this.id = id;
-		this.titulo = titulo;
-		this.ano = ano;
-		this.sinopse = sinopse;
-		this.data = data;
-		this.generos = generos;
-		this.diretor = diretor;
-		this.personagem = personagem;
-	}**/
+	/**
+	 * public FilmeDTO(Long id, String titulo, Integer ano, String sinopse, Date
+	 * data, Genero generos, Diretor diretor, Personagem personagem) {
+	 * this.id = id;
+	 * this.titulo = titulo;
+	 * this.ano = ano;
+	 * this.sinopse = sinopse;
+	 * this.data = data;
+	 * this.generos = generos;
+	 * this.diretor = diretor;
+	 * this.personagem = personagem;
+	 * }
+	 **/
 
 	public void setId(Long id) {
 		this.id = id;
@@ -75,7 +77,6 @@ public class FilmeDTO implements Serializable {
 	public void setSinopse(String sinopse) {
 		this.sinopse = sinopse;
 	}
-	
 
 	public Date getData() {
 		return data;
@@ -113,16 +114,17 @@ public class FilmeDTO implements Serializable {
 		this.personagem = personagem;
 	}
 
-	/**@JsonIgnore
-	public Set<PersonagemDTO> getPersonagem() {
-		return personagemDTO;
-	}
-
-	@JsonIgnore
-	public void setPersonagemDTO(Set<Personagem> personagemDTO) {
-		this.personagemDTO = personagemDTO;
-	}**/
-
+	/**
+	 * @JsonIgnore
+	 *             public Set<PersonagemDTO> getPersonagem() {
+	 *             return personagemDTO;
+	 *             }
+	 * 
+	 * @JsonIgnore
+	 *             public void setPersonagemDTO(Set<Personagem> personagemDTO) {
+	 *             this.personagemDTO = personagemDTO;
+	 *             }
+	 **/
 
 	@Override
 	public int hashCode() {
