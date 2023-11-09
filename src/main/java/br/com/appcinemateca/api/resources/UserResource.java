@@ -3,7 +3,6 @@ package br.com.appcinemateca.api.resources;
 import br.com.appcinemateca.api.config.serialization.converter.MediaType;
 
 import br.com.appcinemateca.api.domain.User;
-import br.com.appcinemateca.api.dto.AtorDTO;
 import br.com.appcinemateca.api.dto.UserDTO;
 
 import br.com.appcinemateca.api.services.interfaces.UserServices;
@@ -15,7 +14,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -23,9 +21,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 //@CrossOrigin
 @RestController
