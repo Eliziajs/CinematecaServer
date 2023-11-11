@@ -14,7 +14,7 @@
 	<name>app-cine</name>
 	<description>Teste</description>
 	<properties>
-		<java.version>19</java.version>
+		<java.version>17</java.version>
 		<model-mapper.version>3.1.1</model-mapper.version>
 		<springdoc.version>2.0.2</springdoc.version>
 		<testcontainers.version>1.16.3</testcontainers.version>

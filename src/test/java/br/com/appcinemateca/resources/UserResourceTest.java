@@ -18,31 +18,28 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
-
 @SpringBootTest(classes = UserRepository.class)
 class UserResourceTest {
 
-    private static final Long ID      = (long) 1;
-    private static final Integer INDEX      = 0;
-    private static final String  SOBRENOME  = "Januario";
-    private static final String DATA        = "20/09/2023";
+    private static final Long ID = (long) 1;
+    private static final Integer INDEX = 0;
+    private static final String SOBRENOME = "Januario";
+    private static final String DATA = "20/09/2023";
     private static final String NASCIMENTO = "20/09/1980";
-    private static final String NAME       = "Elizia";
-    private static final String EMAIL      = "elizia@mail.com";
-    private static final String PASSWORD   = "123";
-    private static final Integer STATUS   = 1;
-    private static final String USERNAME   ="Lindizia";
+    private static final String NAME = "Elizia";
+    private static final String EMAIL = "elizia@mail.com";
+    private static final String PASSWORD = "123";
+    private static final Integer STATUS = 1;
+    private static final String USERNAME = "Lindizia";
 
     private User user = new User();
     private UserDTO userDTO = new UserDTO();
-
 
     @InjectMocks
     private UserResource resource;
