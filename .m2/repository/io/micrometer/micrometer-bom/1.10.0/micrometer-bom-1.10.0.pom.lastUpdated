@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Nov 21 02:10:33 UTC 2023
+@default-spring-release-https\://repo.spring.io/release/.lastUpdated=1700532633486
+https\://repo.maven.apache.org/maven2/.lastUpdated=1700532633868
+https\://repo.spring.io/milestone/.error=
+https\://repo.spring.io/milestone/.lastUpdated=1700532633813
+https\://repo.spring.io/snapshot/.error=
+https\://repo.spring.io/snapshot/.lastUpdated=1700532633650
+https\://repo.spring.io/release/.error=Could not transfer artifact io.micrometer\:micrometer-bom\:pom\:1.10.0 from/to spring-release (https\://repo.spring.io/release)\: authentication failed for https\://repo.spring.io/release/io/micrometer/micrometer-bom/1.10.0/micrometer-bom-1.10.0.pom, status\: 401 Unauthorized
