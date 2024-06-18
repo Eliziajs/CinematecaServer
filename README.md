@@ -1,3 +1,3 @@
 # Cinemateca Server
-![Caso de uso Cinemateca](https://github.com/Eliziajs/CinematecaServer/assets/56489780/b988351d-e63d-495c-ac7f-0796093ddf99)
-![Diagrama de Classe Orientada a Objeto](https://github.com/Eliziajs/CinematecaServer/assets/56489780/076d2800-dd89-42dc-84ad-fd8965d8d627)
+
+![caso_de_uso](https://github.com/Eliziajs/CinematecaServer/assets/56489780/8f230053-448b-4ce7-ae80-a5320f2c0d5e)
